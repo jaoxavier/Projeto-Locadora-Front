@@ -1,0 +1,5 @@
+.div-login {
+    margin-top: 4rem;
+    width: min(100% - 15px, 640px);
+    margin-inline: auto;
+}
