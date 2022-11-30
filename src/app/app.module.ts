@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list'
 import { FormsModule } from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +30,8 @@ import { CarrosListComponent } from './main/carros-list/carros-list.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

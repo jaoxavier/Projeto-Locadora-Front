@@ -5,8 +5,9 @@ body {
 .navbar {
     width: 100%;
     background-color: green;
-    position: absolute;
+    position: static;
     top: 0;
+    padding: 5px 0 5px 0;
 }
 
 ul {
