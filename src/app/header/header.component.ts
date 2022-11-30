@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from '../shared/account.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  account = {
+    login: ''
+  }
+
+  loginSTR: string | null = '';
+
+  logado: Boolean =  this.accountService.isUserLoggedIn();
+
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit(): void {
+    if(this.accountService.isUserLoggedIn()){
+      this.loginSTR = window.localStorage.getItem('login');
+    }
+    if(this.loginSTR != null){
+      this.account.login = this.loginSTR;
+    }
   }
 
 }

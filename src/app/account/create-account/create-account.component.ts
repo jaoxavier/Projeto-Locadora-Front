@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class CreateAccountComponent implements OnInit {
   }
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,7 @@ export class CreateAccountComponent implements OnInit {
         data => console.log(data)
       )
       console.log(result);
+      this.router.navigate(['']);
     } catch (error) {
       console.error(error);
     }
