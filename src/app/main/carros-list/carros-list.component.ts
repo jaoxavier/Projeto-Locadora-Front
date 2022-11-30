@@ -1,4 +1,8 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CarService } from 'src/app/car.service';
+import { Carro } from 'src/app/model/Carro';
+import { AccountService } from 'src/app/shared/account.service';
 
 @Component({
   selector: 'app-carros-list',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarrosListComponent implements OnInit {
 
-  constructor() { }
+  carros: Carro[] = []
+
+  header = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
+
+  constructor(
+    private accountService: AccountService,
+    private carService: CarService
+  ) { }
 
   ngOnInit(): void {
+    this.getCarros()
+  }
+
+  getCarros(){
+    this.carService.getCarros(this.header).subscribe(
+      data => {
+        this.carros = data
+        console.log(data);
+    })
   }
 
 }

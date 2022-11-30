@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, Observable, take } from 'rxjs';
 import jwt_decode from 'jwt-decode';
@@ -41,8 +41,8 @@ export class AccountService {
     return result;
   }
 
-  getUsuarioInfo(login: string): Observable<any>{
-    return this.http.get<any>(`${environment.api}/usuarios/nome/${login}`)
+  getUsuarioInfo(login: string, header: HttpHeaders): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/nome/${login}`,{'headers': header})
   }
 
   getAuthorizationToken(){

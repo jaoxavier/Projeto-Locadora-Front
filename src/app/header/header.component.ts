@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../shared/account.service';
 
@@ -28,5 +29,4 @@ export class HeaderComponent implements OnInit {
       this.account.login = this.loginSTR;
     }
   }
-
 }
