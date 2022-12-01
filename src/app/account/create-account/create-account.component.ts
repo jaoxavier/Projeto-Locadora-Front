@@ -57,7 +57,7 @@ export class CreateAccountComponent implements OnInit {
         this.address.bairro = data.bairro;
         this.address.cidade = data.localidade;
         this.address.rua = data.logradouro;
-        this.address.estado = data.uf;                     
+        this.address.estado = data.uf;
       }
     )
   }

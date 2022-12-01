@@ -1,13 +1,13 @@
-<div class="navbar" *ngIf="!logado">
-    <ul>
-        <li><a href="" routerLink="/login" routerLinkActive='active'>Login</a></li>
-        <li><a href="">Cadastro</a></li>
-    </ul>
-</div>
- 
-<div class="navbar" *ngIf="logado">
-    <ul>
-        <li><a routerLink="/addresses" routerLinkActive='active'>Endereços</a></li>
-        <li><a href="">Olá {{account.nomeUsuario}}</a></li>
-    </ul>
-</div>
+<mat-toolbar color="primary" class="menu">
+  <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+  <a mat-button routerLink="/carros" routerLinkActive="active">Carros</a>
+  <a mat-button routerLink="/meus-pedidos" routerLinkActive="active">Meus Pedidos</a>
+  <div class="espacador"></div>
+  <div *ngIf="!logado">
+    <a routerLink="/login" routerLinkActive='active'>Login</a>
+    <a routerLink="/cadastro" routerLinkActive='active'>Cadastro</a>
+  </div>
+  <div *ngIf="logado">
+    <a routerLink="/perfil" routerLinkActive='active'>Olá {{account.login}}</a>
+  </div>
+</mat-toolbar>

@@ -16,8 +16,12 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
 import { HomeComponent } from './layout/home/home.component';
 import { CarrosListComponent } from './main/carros-list/carros-list.component';
+<<<<<<< HEAD
 import { AddressesComponent } from './main/addresses/addresses.component';
 import { NewAddressComponent } from './main/addresses/new-address/new-address.component';
+=======
+import { MatToolbarModule } from '@angular/material/toolbar'
+>>>>>>> f0b44ad2d650e66a39deddbd382013c2e7a29601
 
 @NgModule({
   declarations: [
@@ -41,7 +45,11 @@ import { NewAddressComponent } from './main/addresses/new-address/new-address.co
     RouterModule,
     FormsModule,
     MatGridListModule,
+<<<<<<< HEAD
     MatListModule
+=======
+    MatToolbarModule
+>>>>>>> f0b44ad2d650e66a39deddbd382013c2e7a29601
   ],
   providers: [],
   bootstrap: [AppComponent]
