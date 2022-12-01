@@ -19,6 +19,7 @@ import { CarrosListComponent } from './main/carros-list/carros-list.component';
 import { AddressesComponent } from './main/addresses/addresses.component';
 import { NewAddressComponent } from './main/addresses/new-address/new-address.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PerfilComponent } from './main/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     CarrosListComponent,
     AddressesComponent,
     NewAddressComponent,
+    PerfilComponent,
     
   ],
   imports: [

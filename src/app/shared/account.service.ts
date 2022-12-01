@@ -88,7 +88,7 @@ export class AccountService {
     return true;
   }
 
-  getCep(cep: string){
+  getCep(cep: String){
     return this.http.get<any>("http://viacep.com.br/ws/" + cep + "/json");
   }
 }

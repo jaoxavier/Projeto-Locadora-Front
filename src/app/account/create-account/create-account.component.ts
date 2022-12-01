@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
+import { Address } from 'src/app/model/Address';
+import { Account } from 'src/app/model/Account';
 
 @Component({
   selector: 'app-create-account',
@@ -10,24 +12,8 @@ import { AccountService } from 'src/app/shared/account.service';
 })
 export class CreateAccountComponent implements OnInit {
 
-  address = {
-    login: '',
-    cep: '',
-    bairro: '',
-    cidade: '',
-    numero: '',
-    rua: '',
-    estado: ''
-  }
-
-  account = {
-    nome: '',
-    cpf: '',
-    cnh: '',
-    login: '',
-    senha: '',
-    address: this.address
-  }
+  address: Address
+  account: Account
 
   constructor(
     private accountService: AccountService,
