@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="menu">
   <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
   <a mat-button routerLink="/carros" routerLinkActive="active">Carros</a>
+  <a mat-button routerLink="/addresses" routerLinkActive="active">Endereços</a>
   <a mat-button routerLink="/meus-pedidos" routerLinkActive="active">Meus Pedidos</a>
   <div class="espacador"></div>
   <div *ngIf="!logado">
@@ -8,6 +9,6 @@
     <a routerLink="/cadastro" routerLinkActive='active'>Cadastro</a>
   </div>
   <div *ngIf="logado">
-    <a routerLink="/perfil" routerLinkActive='active'>Olá {{account.login}}</a>
+    <a routerLink="/perfil" routerLinkActive='active'>Olá {{account.nomeUsuario}}</a>
   </div>
 </mat-toolbar>
