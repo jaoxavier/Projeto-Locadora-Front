@@ -13,6 +13,7 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
 import { HomeComponent } from './layout/home/home.component';
 import { CarrosListComponent } from './main/carros-list/carros-list.component';
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CarrosListComponent } from './main/carros-list/carros-list.component';
     BrowserAnimationsModule,
     MatCardModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

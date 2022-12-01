@@ -2,29 +2,24 @@ body {
     margin: 0;
 }
 
-.navbar {
+.menu {
     width: 100%;
     background-color: green;
     position: static;
     top: 0;
     padding: 5px 0 5px 0;
-}
-
-ul {
-    list-style-type: none;
     display: flex;
-    justify-content: end;
-    gap: 15px;
-    padding-right: 40px;
+    justify-content: space-around;
 }
 
-li {
-    padding-left: 50px;
+.espacador{
+  width: 30%;
 }
 
 a {
     text-decoration: none;
     color: whitesmoke;
+    margin-left: 10px;
 }
 
 a:hover {
