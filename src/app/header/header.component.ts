@@ -8,13 +8,19 @@ import { AccountService } from '../shared/account.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  
+  header = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
+    .set('Access-Control-Allow-Origin', '*')
+    .set('Access-Control-Allow-Credentials', 'true');
 
   account = {
-    login: ''
+    id: 0,
+    nomeUsuario: '',
+    idCarro: ''
   }
 
   loginSTR: string | null = '';
-
   logado: Boolean =  this.accountService.isUserLoggedIn();
 
   constructor(
@@ -26,7 +32,13 @@ export class HeaderComponent implements OnInit {
       this.loginSTR = window.localStorage.getItem('login');
     }
     if(this.loginSTR != null){
-      this.account.login = this.loginSTR;
+      this.accountService.getUsuarioInfo(this.loginSTR, this.header).subscribe(
+        data => {
+          this.account.id = data.id;
+          this.account.nomeUsuario = data.nome;
+          this.account.idCarro = data.idCarro;
+        }
+      )
     }
   }
 }

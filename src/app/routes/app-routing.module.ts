@@ -4,14 +4,19 @@ import { CreateAccountComponent } from '../account/create-account/create-account
 import { LoginComponent } from '../account/login/login.component';
 import { AuthenticationComponent } from '../layout/authentication/authentication.component';
 import { HomeComponent } from '../layout/home/home.component';
+import { AddressesComponent } from '../main/addresses/addresses.component';
+import { NewAddressComponent } from '../main/addresses/new-address/new-address.component';
 import { CarrosListComponent } from '../main/carros-list/carros-list.component';
 import { AuthGuard } from '../shared/auth.guard';
+
 
 const routes: Routes = [
   { path: '',
     component: HomeComponent,
     children: [
-      { path: 'home', component: CarrosListComponent }
+      { path: 'home', component: CarrosListComponent },
+      { path: 'addresses', component:AddressesComponent},
+      { path: 'new-address', component: NewAddressComponent}
     ],
     canActivate: [AuthGuard]
   },
