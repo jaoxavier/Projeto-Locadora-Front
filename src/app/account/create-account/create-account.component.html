@@ -1,13 +1,57 @@
 <h2 class="text-center"> Criar uma nova conta</h2>
 
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-    <div class="form-group">
-        <label>Email</label>
-        <input class="form-control" type="email" name="login" id="login" [(ngModel)]="account.login" required>
+    
+    <div class="info-account">
+        <div class="form-group">
+            <label>Nome:</label>
+            <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="account.nome" required>
+        </div>
+        <div class="form-group">
+            <label>CPF:</label>
+            <input class="form-control" type="text" name="cpf" id="cpf" [(ngModel)]="account.cpf" required>
+        </div>
+        <div class="form-group">
+            <label>CNH:</label>
+            <input class="form-control" type="text" name="cnh" id="cnh" [(ngModel)]="account.cnh" required>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="account.login" [(ngModel)]="address.login" required>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.senha" required>
+        </div>
     </div>
-    <div class="form-group">
-        <label>Password</label>
-        <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.senha" required>
+    
+    <div class="address">
+        <div class="form-group">
+            <label>CEP</label>
+            <input class="form-control" type="text" name="cep" id="cep" [(ngModel)]="address.cep" required>
+            <a (click)="buscaCep()">BUSCAR</a>
+        </div>
+        <div class="form-group">
+            <label>Rua</label>
+            <input type="text" name="rua" id="rua" [(ngModel)]="address.rua">
+        </div>
+        <div class="form-group">
+            <label>Numero</label>
+            <input type="text" name="numero" id="numero" [(ngModel)]="address.numero">
+        </div>
+        <div class="form-group">
+            <label>Cidade</label>
+            <input type="text" name="cidade" id="cidade" [(ngModel)]="address.cidade">
+        </div>
+        <div class="form-group">
+            <label>Bairro</label>
+            <input type="text" name="bairro" id="bairro" [(ngModel)]="address.bairro">
+        </div>
+        <div class="form-group">
+            <label>Estado</label>
+            <input type="text" name="estado" id="estado" [(ngModel)]="address.estado">
+        </div>
     </div>
+
     <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid" >Criar conta</button>
 </form>

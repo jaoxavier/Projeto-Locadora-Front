@@ -86,4 +86,8 @@ export class AccountService {
 
     return true;
   }
+
+  getCep(cep: string){
+    return this.http.get<any>("http://viacep.com.br/ws/" + cep + "/json");
+  }
 }

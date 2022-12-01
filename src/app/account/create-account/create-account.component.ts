@@ -10,9 +10,23 @@ import { AccountService } from 'src/app/shared/account.service';
 })
 export class CreateAccountComponent implements OnInit {
 
+  address = {
+    login: '',
+    cep: '',
+    bairro: '',
+    cidade: '',
+    numero: '',
+    rua: '',
+    estado: ''
+  }
+
   account = {
+    nome: '',
+    cpf: '',
+    cnh: '',
     login: '',
     senha: '',
+    address: this.address
   }
 
   constructor(
@@ -35,6 +49,17 @@ export class CreateAccountComponent implements OnInit {
     }
     this.account.login = '';
     this.account.senha = '';
+  }
+
+  buscaCep(){
+    this.accountService.getCep(this.address.cep).subscribe(
+      data => {
+        this.address.bairro = data.bairro;
+        this.address.cidade = data.localidade;
+        this.address.rua = data.logradouro;
+        this.address.estado = data.uf;                     
+      }
+    )
   }
 
 }
