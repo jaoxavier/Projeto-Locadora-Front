@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
-import { LoginComponent } from './account/login/login.component';
-import { AuthenticationComponent } from './layout/authentication/authentication.component';
-import { HomeComponent } from './layout/home/home.component';
-import { AddressesComponent } from './main/addresses/addresses.component';
-import { NewAddressComponent } from './main/addresses/new-address/new-address.component';
-import { CarrosListComponent } from './main/carros-list/carros-list.component';
-import { AuthGuard } from './shared/auth.guard';
+import { CreateAccountComponent } from '../account/create-account/create-account.component';
+import { LoginComponent } from '../account/login/login.component';
+import { AuthenticationComponent } from '../layout/authentication/authentication.component';
+import { HomeComponent } from '../layout/home/home.component';
+import { AddressesComponent } from '../main/addresses/addresses.component';
+import { NewAddressComponent } from '../main/addresses/new-address/new-address.component';
+import { CarrosListComponent } from '../main/carros-list/carros-list.component';
+import { AuthGuard } from '../shared/auth.guard';
+
 
 const routes: Routes = [
   { path: '',
