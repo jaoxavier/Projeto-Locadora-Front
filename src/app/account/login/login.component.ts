@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
 
 @Component({
@@ -22,14 +22,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSubmit(){
+  onSubmit(){
     try {
-      const result = await this.accountService.login(this.login);
-      console.log(`Login efetuado: ${result}`);
-      this.router.navigate([''])
+      this.accountService.login(this.login).subscribe(data=>{
+        this.router.navigate(['../home'])
+        .then(()=>console.log(`Login efetuado: ${data.login}`))
+      })
     } catch (error) {
       console.error(error)
     }
   }
-
 }
