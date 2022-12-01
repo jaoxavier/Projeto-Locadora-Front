@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import {MatListModule} from '@angular/material/list';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +16,8 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
 import { HomeComponent } from './layout/home/home.component';
 import { CarrosListComponent } from './main/carros-list/carros-list.component';
+import { AddressesComponent } from './main/addresses/addresses.component';
+import { NewAddressComponent } from './main/addresses/new-address/new-address.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { CarrosListComponent } from './main/carros-list/carros-list.component';
     CreateAccountComponent,
     AuthenticationComponent,
     HomeComponent,
-    CarrosListComponent
+    CarrosListComponent,
+    AddressesComponent,
+    NewAddressComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -30,8 +38,10 @@ import { CarrosListComponent } from './main/carros-list/carros-list.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
+    RouterModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

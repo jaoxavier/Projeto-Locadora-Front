@@ -7,6 +7,7 @@
  
 <div class="navbar" *ngIf="logado">
     <ul>
-        <li><a href="">Olá {{account.login}}</a></li>
+        <li><a routerLink="/addresses" routerLinkActive='active'>Endereços</a></li>
+        <li><a href="">Olá {{account.nomeUsuario}}</a></li>
     </ul>
 </div>

@@ -42,7 +42,8 @@ export class AccountService {
   }
 
   getUsuarioInfo(login: string, header: HttpHeaders): Observable<any>{
-    return this.http.get<any>(`${environment.api}/usuarios/nome/${login}`,{'headers': header})
+    const result = this.http.get<any>(`${environment.api}/usuarios/login/${login}`,{'headers': header})
+    return result;
   }
 
   getAuthorizationToken(){
