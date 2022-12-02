@@ -26,7 +26,10 @@ export class LoginComponent implements OnInit {
     try {
       this.accountService.login(this.login).subscribe(data=>{
         this.router.navigate(['home'])
-        .then(()=>console.log(`Login efetuado: ${data.login}`))
+        .then(()=>{
+          console.log(`Login efetuado: ${data.login}`)
+          window.location.reload();
+        })
       })
     } catch (error) {
       console.error(error)

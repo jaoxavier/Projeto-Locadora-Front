@@ -9,10 +9,15 @@ import jwt_decode from 'jwt-decode';
 })
 export class AccountService {
 
+  header = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.getAuthorizationToken()}`)
+
   acess_token?: string;
+  result: number;
 
   account = {
-    login: ''
+    login: '',
+    id: ''
   }
 
   constructor(
@@ -25,10 +30,11 @@ export class AccountService {
       data => {
         this.acess_token = data.token;
         this.account.login = data.login;
+        this.account.id = data.id;
 
         if (result && this.acess_token!=undefined){
           window.localStorage.setItem('token', this.acess_token);
-          window.localStorage.setItem('login', this.account.login)
+          window.localStorage.setItem('id', this.account.id);
         }
       }
     )
@@ -40,9 +46,12 @@ export class AccountService {
     return result;
   }
 
-  getUsuarioInfo(login: String, header: HttpHeaders): Observable<any>{
-    const result = this.http.get<any>(`${environment.api}/usuarios/login/${login}`,{'headers': header})
-    return result;
+  getUsuarioInfo(): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/login/${this.account.login}`,{'headers': this.header});
+  }
+
+  getUsuarioAccount(id: string, header: HttpHeaders): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/id/${id}`, {'headers' : this.header})
   }
 
   getAuthorizationToken(){

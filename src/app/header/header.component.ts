@@ -13,15 +13,16 @@ export class HeaderComponent implements OnInit {
     .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Credentials', 'true');
+  
+  id: string | null;
 
   account = {
-    id: 0,
-    nomeUsuario: '',
-    idCarro: ''
+    id: '',
+    nomeUsuario: ''
   }
 
-  loginSTR: String | null;
-  logado: Boolean =  this.accountService.isUserLoggedIn();
+
+  logado: Boolean;
 
   constructor(
     private accountService: AccountService
@@ -29,16 +30,19 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.accountService.isUserLoggedIn()){
-      this.loginSTR = window.localStorage.getItem('login');
-    }
-    if(this.loginSTR != null){
-      this.accountService.getUsuarioInfo(this.loginSTR, this.header).subscribe(
-        data => {
-          this.account.id = data.id;
-          this.account.nomeUsuario = data.nome;
-          this.account.idCarro = data.idCarro;
+      this.logado = this.accountService.isUserLoggedIn();
+      this.id = window.localStorage.getItem('id');
+
+      if(this.id != null){
+        this.account.id = this.id;
+      }
+
+      this.accountService.getUsuarioAccount(this.account.id, this.header).subscribe(
+        data => {          
+          this.account.nomeUsuario = data.nomeUsuario;
         }
       )
     }
+
   }
 }
