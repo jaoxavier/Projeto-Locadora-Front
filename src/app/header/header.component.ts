@@ -8,7 +8,7 @@ import { AccountService } from '../shared/account.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+
   header = new HttpHeaders()
     .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
     .set('Access-Control-Allow-Origin', '*')
@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     idCarro: ''
   }
 
-  loginSTR: string | null = '';
+  loginSTR: String | null;
   logado: Boolean =  this.accountService.isUserLoggedIn();
 
   constructor(

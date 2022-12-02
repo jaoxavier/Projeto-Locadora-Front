@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     try {
       this.accountService.login(this.login).subscribe(data=>{
-        this.router.navigate(['../home'])
+        this.router.navigate(['home'])
         .then(()=>console.log(`Login efetuado: ${data.login}`))
       })
     } catch (error) {

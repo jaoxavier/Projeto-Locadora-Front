@@ -12,8 +12,23 @@ import { Account } from 'src/app/model/Account';
 })
 export class CreateAccountComponent implements OnInit {
 
-  address: Address
-  account: Account
+  address = {
+    bairro: '',
+    cidade: '',
+    rua: '',
+    estado: '',
+    cep: '',
+    numero: '',
+    login: ''
+  }
+  account = {
+    nome: '',
+    cpf: '',
+    cnh: '',
+    login: '',
+    senha: '',
+    address: this.address
+  }
 
   constructor(
     private accountService: AccountService,
@@ -28,8 +43,7 @@ export class CreateAccountComponent implements OnInit {
       const result = this.accountService.createAccount(this.account).subscribe(
         data => console.log(data)
       )
-      console.log(result);
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
     } catch (error) {
       console.error(error);
     }

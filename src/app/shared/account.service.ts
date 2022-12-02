@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map, Observable, take } from 'rxjs';
+import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
-import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +40,7 @@ export class AccountService {
     return result;
   }
 
-  getUsuarioInfo(login: string, header: HttpHeaders): Observable<any>{
+  getUsuarioInfo(login: String, header: HttpHeaders): Observable<any>{
     const result = this.http.get<any>(`${environment.api}/usuarios/login/${login}`,{'headers': header})
     return result;
   }
@@ -84,7 +83,7 @@ export class AccountService {
     }else if (this.isTokenExpired(token)){
       return false;
     }
-
+    console.log("Usuario logado")
     return true;
   }
 

@@ -12,8 +12,24 @@ import { AddressService } from 'src/app/shared/address.service';
 })
 export class PerfilComponent implements OnInit {
 
-  account: Account
-  address: Address
+  address = {
+    bairro: '',
+    cidade: '',
+    rua: '',
+    estado: '',
+    cep: '',
+    numero: '',
+    login: ''
+  }
+  account = {
+    nome: '',
+    cpf: '',
+    cnh: '',
+    login: '',
+    senha: '',
+    address: this.address
+  }
+
   header = new HttpHeaders()
     .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
 
@@ -34,7 +50,7 @@ export class PerfilComponent implements OnInit {
 
     this.accountService.getUsuarioInfo(this.accountService.account.login, this.header)
     .subscribe(data=>{
-      this.account.address = this.address
+      this.account.address = data.address
       this.account.cnh = data.cnh
       this.account.cpf = data.cpf
       this.account.login = data.login

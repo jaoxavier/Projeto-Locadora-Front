@@ -11,7 +11,7 @@ export class CarService {
     private http: HttpClient
   ) { }
 
-  getCarros(header: HttpHeaders){
-    return this.http.get<any>(`${environment.api}/carros`, {'headers' : header});
+  getCarros(){
+    return this.http.get<any>(`${environment.api}/carros`);
   }
 }

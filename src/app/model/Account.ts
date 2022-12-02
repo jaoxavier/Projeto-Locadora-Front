@@ -1,4 +1,4 @@
-import { Address } from 'src/app/model/Address'
+import { Address } from "./Address"
 
 export class Account{
   nome: String

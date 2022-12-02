@@ -1,8 +1,6 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CarService } from 'src/app/services/car.service';
 import { Carro } from 'src/app/model/Carro';
-import { AccountService } from 'src/app/shared/account.service';
 
 @Component({
   selector: 'app-carros-list',
@@ -13,11 +11,7 @@ export class CarrosListComponent implements OnInit {
 
   carros: Carro[] = []
 
-  header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
-
   constructor(
-    private accountService: AccountService,
     private carService: CarService
   ) { }
 
@@ -26,11 +20,10 @@ export class CarrosListComponent implements OnInit {
   }
 
   getCarros(){
-    this.carService.getCarros(this.header).subscribe(
+    this.carService.getCarros().subscribe(
       data => {
         this.carros = data
         console.log(data);
     })
   }
-
 }
