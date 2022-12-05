@@ -1,18 +1,19 @@
+<section class="cadastro">
 <h2 class="text-center"> Criar uma nova conta</h2>
 
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-
+    
     <div class="info-account">
         <div class="form-group">
-            <label>Nome:</label>
+            <label>Nome</label>
             <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="account.nome" required>
         </div>
         <div class="form-group">
-            <label>CPF:</label>
+            <label>CPF</label>
             <input class="form-control" type="text" name="cpf" id="cpf" [(ngModel)]="account.cpf" required>
         </div>
         <div class="form-group">
-            <label>CNH:</label>
+            <label>CNH</label>
             <input class="form-control" type="text" name="cnh" id="cnh" [(ngModel)]="account.cnh" required>
         </div>
         <div class="form-group">
@@ -24,34 +25,36 @@
             <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.senha" required>
         </div>
     </div>
-
+    
     <div class="address">
         <div class="form-group">
             <label>CEP</label>
-            <input class="form-control" type="text" name="cep" id="cep" [(ngModel)]="address.cep" required>
-            <a (click)="buscaCep()">BUSCAR</a>
+            <input class="form-control" type="text" name="cep" id="cep" [(ngModel)]="address.cep"   required>
+           <button class="buscar" (click)="buscaCep()">BUSCAR</button>
+            
         </div>
         <div class="form-group">
             <label>Rua</label>
-            <input type="text" name="rua" id="rua" [(ngModel)]="address.rua">
+            <input type="text" name="rua" id="rua" [(ngModel)]="address.rua" required>
         </div>
         <div class="form-group">
             <label>Numero</label>
-            <input type="text" name="numero" id="numero" [(ngModel)]="address.numero">
+            <input type="text" name="numero" id="numero" [(ngModel)]="address.numero" required>
         </div>
         <div class="form-group">
             <label>Cidade</label>
-            <input type="text" name="cidade" id="cidade" [(ngModel)]="address.cidade">
+            <input type="text" name="cidade" id="cidade" [(ngModel)]="address.cidade" required>
         </div>
         <div class="form-group">
             <label>Bairro</label>
-            <input type="text" name="bairro" id="bairro" [(ngModel)]="address.bairro">
+            <input type="text" name="bairro" id="bairro" [(ngModel)]="address.bairro" required>
         </div>
         <div class="form-group">
             <label>Estado</label>
-            <input type="text" name="estado" id="estado" [(ngModel)]="address.estado">
+            <input type="text" name="estado" id="estado" [(ngModel)]="address.estado" required>
         </div>
     </div>
 
     <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid" >Criar conta</button>
 </form>
+</section>
