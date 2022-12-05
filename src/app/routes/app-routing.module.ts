@@ -29,17 +29,11 @@ const routes: Routes = [
   },
   {
     path: 'addresses', component: AddressesComponent,
-<<<<<<< HEAD
     canActivate: [AuthGuard]
   },
   {
     path: 'new-address', component: NewAddressComponent,
     canActivate: [AuthGuard]
-=======
-  },
-  { 
-    path: 'new-address', component: NewAddressComponent 
->>>>>>> 40191ead0cd8f2e8407df32bc2745da751a06628
   },
   {
     path: 'pedidos', component: PedidosComponent,

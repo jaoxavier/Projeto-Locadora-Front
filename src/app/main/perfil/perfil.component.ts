@@ -38,7 +38,6 @@ export class PerfilComponent implements OnInit {
   }
 
   private id = window.localStorage.getItem('id')
-  private login = window.localStorage.getItem('login');
 
   header = new HttpHeaders()
     .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
@@ -53,25 +52,17 @@ export class PerfilComponent implements OnInit {
         this.account.login = data.email
         this.account.nome = data.nomeUsuario
       })
-
-    if(this.login != null){
-      this.addressService.getAddress(this.login, this.header).subscribe(
+      this.addressService.getAddress(this.id, this.header).subscribe(
         data => {
           this.address = data[0]
           console.log(data)
           console.log(this.address)
         }
       )
-
-      this.pedidosService.postPedido(5, 10).subscribe(data=>{
+      this.pedidosService.postPedido(5, 10)
+      this.pedidosService.getPedidosUsuario(this.id, this.header).subscribe(data=>{
         console.log(data)
       })
-
-      this.pedidosService.getPedidosUsuario(this.login, this.header).subscribe(data=>{
-        console.log(data)
-      })
-
-    }
     } else {
       console.log("Erro, id nulo")
     }
