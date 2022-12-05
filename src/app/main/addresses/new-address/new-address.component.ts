@@ -48,13 +48,15 @@ export class NewAddressComponent implements OnInit {
   }
 
   buscaCep(){
+    const id = window.localStorage.getItem('id');
+    if(id != null){
+      this.accountService.getLoginById(id, this.header).subscribe(
+        data => this.address.login = data.login
+      )
+    }
+
     this.accountService.getCep(this.address.cep).subscribe(
       data => {
-        const loginSTR = window.localStorage.getItem('login')
-        if(loginSTR != null){
-          this.address.login = loginSTR
-        }
-
         this.address.cep = data.cep
         this.address.bairro = data.bairro;
         this.address.cidade = data.localidade;

@@ -54,6 +54,10 @@ export class AccountService {
     return this.http.get<any>(`${environment.api}/usuarios/id/${id}`, {'headers' : this.header})
   }
 
+  getLoginById(id: string, header: HttpHeaders): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/${id}`, {'headers': header})
+  }
+
   getAuthorizationToken(){
     const token = window.localStorage.getItem('token');
     return token;
