@@ -20,7 +20,7 @@ import { AddressesComponent } from './main/addresses/addresses.component';
 import { NewAddressComponent } from './main/addresses/new-address/new-address.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PerfilComponent } from './main/perfil/perfil.component';
-import { PedidosComponent } from './pedidos/pedidos.component';
+import { PedidosComponent } from './main/pedidos/pedidos.component';
 import { NewOrderComponent } from './main/carros-list/new-order/new-order.component';
 
 @NgModule({

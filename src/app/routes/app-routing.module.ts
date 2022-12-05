@@ -8,7 +8,7 @@ import { NewAddressComponent } from '../main/addresses/new-address/new-address.c
 import { CarrosListComponent } from '../main/carros-list/carros-list.component';
 import { NewOrderComponent } from '../main/carros-list/new-order/new-order.component';
 import { PerfilComponent } from '../main/perfil/perfil.component';
-import { PedidosComponent } from '../pedidos/pedidos.component';
+import { PedidosComponent } from '../main/pedidos/pedidos.component';
 import { AuthGuard } from '../shared/auth.guard';
 
 

@@ -33,11 +33,9 @@ export class NewOrderComponent implements OnInit {
 
     console.log(this.pedido);
     this.pedidoService.postPedido(this.pedido).subscribe(
-      data => {
-        console.log(data);
-         
-      }
+      data => window.location.reload()
     )
+
   }
 
 }

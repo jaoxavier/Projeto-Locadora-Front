@@ -64,7 +64,7 @@ export class AccountService {
     return token;
   }
 
-  getTokenExpirationDate(token: String): Date | null{
+  getTokenExpirationDate(token: string): Date | null{
     const decoded: any = jwt_decode(token);
 
     if(decoded.exp === undefined){
@@ -76,7 +76,7 @@ export class AccountService {
     return date;
   }
 
-  isTokenExpired(token: String): Boolean{
+  isTokenExpired(token: string): Boolean{
     if(!token){
       return true;
     }

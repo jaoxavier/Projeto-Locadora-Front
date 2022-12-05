@@ -1,5 +1,5 @@
 import { Component, createPlatform, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
 import { Address } from 'src/app/model/Address';

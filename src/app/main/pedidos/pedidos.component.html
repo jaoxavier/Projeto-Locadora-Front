@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="carro-pedido" *ngIf="carro">
+        <h1>CARRO</h1>
+        <p>{{carro.modelo}}</p>
+        <p>{{carro.placa}}</p>
+        <p>{{carro.valorDiaria}}</p>
+        <p>{{carro.categoria}}</p>
+    </div>
+    <div class="pedido" *ngIf="pedido">
+        <h1>PEDIDO</h1>
+        <p>{{pedido.diasLocacao}}</p>
+        <p>{{pedido.status}}</p>
+        <p>{{pedido.valorTotal}}</p>
+    </div>
+    <button (click)="devolver()">Devolver</button>
+</div>

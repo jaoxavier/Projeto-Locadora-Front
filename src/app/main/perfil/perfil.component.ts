@@ -59,10 +59,10 @@ export class PerfilComponent implements OnInit {
           console.log(this.address)
         }
       )
-      this.pedidosService.postPedido(5, 10)
-      this.pedidosService.getPedidosUsuario(this.id, this.header).subscribe(data=>{
-        console.log(data)
-      })
+      //this.pedidosService.postPedido(5, 10)
+      //this.pedidosService.getPedidosUsuario(this.id, this.header).subscribe(data=>{
+      //  console.log(data)
+      //})
     } else {
       console.log("Erro, id nulo")
     }
