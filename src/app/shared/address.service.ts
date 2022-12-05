@@ -12,8 +12,8 @@ export class AddressService {
     private http: HttpClient
     ) { }
 
-    getAddress(login: string, header: HttpHeaders): Observable<any>{
-      const result = this.http.get<any>(`${environment.api}/address/login/${login}`, {'headers': header})
+    getAddress(id: string, header: HttpHeaders): Observable<any>{
+      const result = this.http.get<any>(`${environment.api}/address/id/${id}`, {'headers': header})
       return result;
     }
 
