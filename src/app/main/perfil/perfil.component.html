@@ -27,8 +27,14 @@
     <mat-card-header>
       <mat-card-title>Pedidos:</mat-card-title>
     </mat-card-header>
-    <mat-card-content>
-
+    <mat-card-content *ngIf="pedido.carro">
+      <p>Carro: {{pedido.carro}}</p>
+      <p>Dias locados: {{pedido.diasLocacao}}</p>
+      <p>Valor do pedido: {{pedido.valorTotal}}</p>
+      <p>Status do pedido: {{pedido.status}}</p>
+    </mat-card-content>
+    <mat-card-content *ngIf="!pedido.carro">
+      <p>Nenhum pedido realizado</p>
     </mat-card-content>
   </mat-card>
 </div>

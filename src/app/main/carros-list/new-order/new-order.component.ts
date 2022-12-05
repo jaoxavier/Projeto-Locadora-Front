@@ -29,15 +29,13 @@ export class NewOrderComponent implements OnInit {
 
   onSubmit(){
     this.pedido.diasLocacao = Number(this.pedido.diasLocacao);
-    window.localStorage.removeItem('idCarro');
-
     console.log(this.pedido);
-    this.pedidoService.postPedido(this.pedido).subscribe(
+    this.pedidoService.postPedido(Number(window.localStorage.getItem('idCarro')), this.pedido.diasLocacao).subscribe(
       data => {
         console.log(data);
-         
-      }
-    )
+      })
+      window.localStorage.removeItem('idCarro');
+      this.router.navigate(['/perfil'])
   }
 
 }
