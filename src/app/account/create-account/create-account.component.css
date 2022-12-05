@@ -1,0 +1,78 @@
+@media screen and
+(min-width: 200px) and
+(max-width: 670px) {
+    .cadastro{
+        min-width: 70%;
+    }
+}
+label{
+    color: white;
+    font-size: 15px;
+    display: inline-block;
+    width: 80px;
+    
+    
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 25px; 
+    padding-bottom: 5px;
+    
+}
+section {
+    margin-top: 5%;
+    border: 1px solid black;
+    border-radius: 3%;
+    position:absolute;
+    padding: 30px;
+    top: 50%;
+    background-color:rgba(0, 0, 0, 0.75);
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.cadastro  div{
+    padding-bottom: 15px;
+    
+
+}
+
+button{
+    
+    color: white;
+    border: none;
+    background-color: dodgerblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    padding: 15px;
+    border-radius: 5%;
+    width: 100%;
+}
+
+.buscar{
+    width: 30%;
+    margin: 10px;
+    padding: 3px;
+    font-size: 13px;
+    background-color: gray;
+    display: block;
+
+}
+
+.buscar:hover{
+    background-color: darkgrey;
+}
+
+input{
+    padding: 5px;
+    outline: none;
+    font-size: 10px;
+}
+
+button:hover{
+    background-color:deepskyblue;
+    cursor: pointer;
+}
