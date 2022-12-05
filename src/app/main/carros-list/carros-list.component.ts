@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CarService } from 'src/app/services/car.service';
 import { Carro } from 'src/app/model/Carro';
 
@@ -10,6 +10,7 @@ import { Carro } from 'src/app/model/Carro';
 export class CarrosListComponent implements OnInit {
 
   carros: Carro[] = []
+  carro: Carro;
 
   constructor(
     private carService: CarService
@@ -25,5 +26,9 @@ export class CarrosListComponent implements OnInit {
         this.carros = data
         console.log(data);
     })
+  }
+
+  getCarroId(id: number){
+    window.localStorage.setItem('idCarro', id.toString())
   }
 }

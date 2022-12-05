@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AccountService } from './account.service';
 
@@ -21,21 +22,19 @@ export class PedidoService {
     private accountService: AccountService
   ) { }
 
-  postPedido(idCarro: number, diasLocacao: number){
+  postPedido(pedido: any): Observable<any>{
     
-    const loginSTR = window.localStorage.getItem('login'); 
-    if(loginSTR != null && this.accountService.isUserLoggedIn()){
-      this.accountService.getUsuarioInfo(loginSTR, this.header).subscribe(
-        data => {
-          this.pedido.carro = idCarro;
-          this.pedido.usuario = data.id
-          this.pedido.diasLocacao = diasLocacao;
-        }
-      )
-    }
+    this.pedido.carro = pedido.carro;
+    this.pedido.diasLocacao = pedido.diasLocacao;
+    this.pedido.usuario = pedido.usuario;
+    
+    console.log(this.pedido); 
 
-    
     return this.http.post<any>(`${environment.api}/pedidos/id`, this.pedido, {'headers': this.header});
+  }
+
+  getIdCarro(){
+    
   }
 
 }

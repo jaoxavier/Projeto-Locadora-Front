@@ -21,6 +21,7 @@ import { NewAddressComponent } from './main/addresses/new-address/new-address.co
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PerfilComponent } from './main/perfil/perfil.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { NewOrderComponent } from './main/carros-list/new-order/new-order.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     NewAddressComponent,
     PerfilComponent,
     PedidosComponent,
+    NewOrderComponent,
     
   ],
   imports: [

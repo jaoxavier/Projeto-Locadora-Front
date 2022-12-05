@@ -1,6 +1,6 @@
-<mat-grid-list cols="4">
+<mat-grid-list cols="4" >
   <div *ngFor="let carro of carros">
-    <mat-grid-tile>
+    <mat-grid-tile *ngIf="carro.disponivel">
       <mat-card class="card-carro">
         <mat-card-header class="card-carro-header">
           <h3>{{carro.modelo}}</h3>
@@ -11,7 +11,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-button>
-            <span>Alugar</span>
+            <span routerLink="/new-order" (click)="getCarroId(carro.id)"> Alugar</span>
           </button>
         </mat-card-actions>
       </mat-card>

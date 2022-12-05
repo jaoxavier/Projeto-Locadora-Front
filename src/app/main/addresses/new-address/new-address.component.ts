@@ -40,7 +40,6 @@ export class NewAddressComponent implements OnInit {
       const result = this.addressService.postAddress(this.address, this.header).subscribe(
         data => console.log(data)
       )
-      console.log(result);
       this.router.navigate(['/addresses']);
     } catch (error) {
       console.error(error);

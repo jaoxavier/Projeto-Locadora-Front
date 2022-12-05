@@ -1,0 +1,10 @@
+<div class="login">
+    <h2 class="text-center">Entrar</h2>
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+        <div class="form-group">
+            <label>Por quantos dias deseja alugar?</label>
+            <input class="form-control" type="diasLocacao" name="diasLocacao" id="diasLocacao" [(ngModel)]="pedido.diasLocacao" required>
+        </div>
+        <button type="submit" [disabled]="form.form.invalid" >Enviar</button>
+    </form>
+  </div>
