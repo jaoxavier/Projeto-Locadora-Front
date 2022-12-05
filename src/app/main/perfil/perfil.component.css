@@ -1,0 +1,8 @@
+.perfil p{
+  font-size: large;
+  margin: 10px 0 10px 0;
+}
+.perfil{
+  display: flex;
+  justify-content: center;
+}

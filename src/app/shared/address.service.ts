@@ -22,7 +22,7 @@ export class AddressService {
       return result;
     }
 
-    deleteAddress(id: string, header: HttpHeaders){
+    deleteAddress(id: String, header: HttpHeaders){
       const result = this.http.delete<any>(`${environment.api}/address/${id}`, {'headers': header});
       return result
     }

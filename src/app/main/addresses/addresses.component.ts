@@ -26,30 +26,26 @@ export class AddressesComponent implements OnInit {
     cep: ''
   }
 
-  id: string | null;
-
   addresses: any[] = [];
-  
+
   constructor(
     private addressService: AddressService,
     private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
-    this.id = window.localStorage.getItem('id');
-    if(this.accountService.isUserLoggedIn() && this.id != null){
-      this.accountService.getLoginById(this.id, this.header).subscribe(
+    const id = window.localStorage.getItem('id');
+    if(id != null && this.accountService.isUserLoggedIn()){
+      this.addressService.getAddress(id, this.header).subscribe(
         data => {
-          if(this.id != null){
-            this.addressService.getAddress(this.id, this.header)
-            .subscribe(data => this.addresses = data)
-          }
-          this.address.login = data.login
-        });
+          this.addresses = data
+          console.log(this.addresses);
+        }
+      )
     }
   }
 
-  deleteAddress(id: string){    
+  deleteAddress(id: String){
     this.addressService.deleteAddress(id, this.header).subscribe();
     window.location.reload()
   }

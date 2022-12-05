@@ -36,7 +36,7 @@ const routes: Routes = [
     path: 'addresses', component: AddressesComponent,
     canActivate: [AuthGuard]
   },
-  { 
+  {
     path: 'new-address', component: NewAddressComponent,
     canActivate: [AuthGuard]
   },

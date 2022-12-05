@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, createPlatform, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
@@ -40,14 +40,14 @@ export class CreateAccountComponent implements OnInit {
 
   onSubmit(){
     try {
-      const result = this.accountService.createAccount(this.account).subscribe(
-        data => console.log(data)
-      )
+      const result = this.accountService.createAccount(this.account).subscribe(data => {
+        console.log(this.account)
+        console.log(this.address)
+      })
       this.router.navigate(['login']);
     } catch (error) {
       console.error(error);
     }
-    this.account.login = '';
     this.account.senha = '';
   }
 
@@ -58,6 +58,8 @@ export class CreateAccountComponent implements OnInit {
         this.address.cidade = data.localidade;
         this.address.rua = data.logradouro;
         this.address.estado = data.uf;
+        this.address.cep = data.cep;
+        this.address.login = this.account.login;
       }
     )
   }

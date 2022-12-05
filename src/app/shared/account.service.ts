@@ -33,6 +33,7 @@ export class AccountService {
         this.account.id = data.id;
 
         if (result && this.acess_token!=undefined){
+          window.localStorage.setItem('login', this.account.login);
           window.localStorage.setItem('token', this.acess_token);
           window.localStorage.setItem('id', this.account.id);
         }
@@ -50,8 +51,8 @@ export class AccountService {
     return this.http.get<any>(`${environment.api}/usuarios/login/${this.account.login}`,{'headers': this.header});
   }
 
-  getUsuarioAccount(id: string, header: HttpHeaders): Observable<any>{
-    return this.http.get<any>(`${environment.api}/usuarios/id/${id}`, {'headers' : this.header})
+  getUsuarioAccount(id: String, header: HttpHeaders): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/id/${id}`, {'headers' : header})
   }
 
   getLoginById(id: string, header: HttpHeaders): Observable<any>{
@@ -63,7 +64,7 @@ export class AccountService {
     return token;
   }
 
-  getTokenExpirationDate(token: string): Date | null{
+  getTokenExpirationDate(token: String): Date | null{
     const decoded: any = jwt_decode(token);
 
     if(decoded.exp === undefined){
@@ -75,7 +76,7 @@ export class AccountService {
     return date;
   }
 
-  isTokenExpired(token: string): Boolean{
+  isTokenExpired(token: String): Boolean{
     if(!token){
       return true;
     }

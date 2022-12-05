@@ -33,8 +33,4 @@ export class PedidoService {
     return this.http.post<any>(`${environment.api}/pedidos/id`, this.pedido, {'headers': this.header});
   }
 
-  getIdCarro(){
-    
-  }
-
 }
