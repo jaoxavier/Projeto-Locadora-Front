@@ -27,7 +27,7 @@ export class AddressesComponent implements OnInit {
   }
 
   addresses: any[] = [];
-  
+
   constructor(
     private addressService: AddressService,
     private accountService: AccountService
@@ -35,20 +35,20 @@ export class AddressesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const loginSTR = window.localStorage.getItem('login'); 
-    
+    const loginSTR = window.localStorage.getItem('login');
+
     if(loginSTR != null && this.accountService.isUserLoggedIn()){
       this.addressService.getAddress(loginSTR, this.header).subscribe(
-        data => {        
-          this.addresses = data  
+        data => {
+          this.addresses = data
           console.log(this.addresses);
-          
+
         }
       )
     }
   }
 
-  deleteAddress(id: string){    
+  deleteAddress(id: String){
     this.addressService.deleteAddress(id, this.header).subscribe();
     window.location.reload()
   }

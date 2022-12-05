@@ -2,9 +2,9 @@ export {Carro}
 
 class Carro{
     id: number;
-    modelo: string;
-    placa: string;
-    categoria: string;
+    modelo: String;
+    placa: String;
+    categoria: String;
     valorDiaria: number;
     disponivel: boolean;
 }

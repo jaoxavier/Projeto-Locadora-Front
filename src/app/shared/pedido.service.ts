@@ -8,7 +8,7 @@ import { AccountService } from './account.service';
 })
 export class PedidoService {
   pedido = {
-    usuario: 0,
+    usuario: '',
     carro: 0,
     diasLocacao: 0
   }
@@ -21,11 +21,11 @@ export class PedidoService {
     private accountService: AccountService
   ) { }
 
+  private idUsuario = window.localStorage.getItem('id');
+
   postPedido(idCarro: number, diasLocacao: number){
-    
-    const loginSTR = window.localStorage.getItem('login'); 
-    if(loginSTR != null && this.accountService.isUserLoggedIn()){
-      this.accountService.getUsuarioInfo(loginSTR, this.header).subscribe(
+    if(this.idUsuario != null && this.accountService.isUserLoggedIn()){
+      this.accountService.getUsuarioAccount(this.idUsuario, this.header).subscribe(
         data => {
           this.pedido.carro = idCarro;
           this.pedido.usuario = data.id
@@ -33,9 +33,10 @@ export class PedidoService {
         }
       )
     }
-
-    
     return this.http.post<any>(`${environment.api}/pedidos/id`, this.pedido, {'headers': this.header});
   }
 
+  getPedidosUsuario(login: String, header: HttpHeaders){
+    return this.http.get<any>(`${environment.api}/pedidos/login/${login}`, {'headers': header})
+  }
 }

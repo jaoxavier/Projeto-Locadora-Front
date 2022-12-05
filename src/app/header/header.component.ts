@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
     .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
     .set('Access-Control-Allow-Origin', '*')
     .set('Access-Control-Allow-Credentials', 'true');
-  
+
   id: string | null;
 
   account = {
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
       }
 
       this.accountService.getUsuarioAccount(this.account.id, this.header).subscribe(
-        data => {          
+        data => {
           this.account.nomeUsuario = data.nomeUsuario;
         }
       )

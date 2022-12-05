@@ -29,9 +29,10 @@ const routes: Routes = [
   },
   {
     path: 'addresses', component: AddressesComponent,
-    children: [
-      { path: 'new-address', component: NewAddressComponent }
-    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'new-address', component: NewAddressComponent,
     canActivate: [AuthGuard]
   },
   {
