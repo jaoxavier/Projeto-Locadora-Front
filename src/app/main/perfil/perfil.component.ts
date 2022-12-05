@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Carro } from 'src/app/model/Carro';
 import { AccountService } from 'src/app/shared/account.service';
 import { AddressService } from 'src/app/shared/address.service';
 import { PedidoService } from 'src/app/shared/pedido.service';
@@ -29,8 +30,8 @@ export class PerfilComponent implements OnInit {
   }
   pedido = {
     carro: '',
-    dias: '',
-    valor: '',
+    diasLocacao: '',
+    valorTotal: '',
     status: ''
   }
 
@@ -43,7 +44,7 @@ export class PerfilComponent implements OnInit {
     .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
 
   ngOnInit(): void {
-    if(this.id!=null){
+    if(this.id!=null && this.accountService.isUserLoggedIn()){
       this.accountService.getUsuarioAccount(this.id, this.header)
       .subscribe(data=>{
         console.log(data);
@@ -52,7 +53,9 @@ export class PerfilComponent implements OnInit {
         this.account.login = data.email
         this.account.nome = data.nomeUsuario
       })
-      this.addressService.getAddress(this.id, this.header).subscribe(
+
+      this.addressService.getAddress(this.id, this.header)
+      .subscribe(
         data => {
           this.address = data[0]
           console.log(data)

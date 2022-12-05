@@ -1,5 +1,7 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/shared/account.service';
 import { PedidoService } from 'src/app/shared/pedido.service';
 import { CarrosListComponent } from '../carros-list.component';
 
@@ -10,6 +12,9 @@ import { CarrosListComponent } from '../carros-list.component';
 })
 export class NewOrderComponent implements OnInit {
 
+  header = new HttpHeaders()
+  .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
+
   pedido = {
     carro: Number(window.localStorage.getItem('idCarro')),
     diasLocacao: 0,
@@ -17,6 +22,7 @@ export class NewOrderComponent implements OnInit {
   }
 
   constructor(
+    private accountService: AccountService,
     private pedidoService: PedidoService,
     private router: Router
   ) { }
@@ -29,13 +35,12 @@ export class NewOrderComponent implements OnInit {
 
   onSubmit(){
     this.pedido.diasLocacao = Number(this.pedido.diasLocacao);
-    window.localStorage.removeItem('idCarro');
-
     console.log(this.pedido);
-    this.pedidoService.postPedido(this.pedido).subscribe(
-      data => window.location.reload()
-    )
-
+    this.pedidoService.postPedido(this.pedido.carro, this.pedido.diasLocacao).subscribe(
+      data =>{
+        window.localStorage.removeItem('idCarro');
+        this.router.navigate(['/perfil']);
+      })
   }
 
 }
