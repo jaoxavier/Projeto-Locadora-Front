@@ -1,4 +1,4 @@
-import { Component, createPlatform, OnInit } from '@angular/core';
+import { Component, createPlatform, EventEmitter, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
@@ -10,7 +10,9 @@ import { Account } from 'src/app/model/Account';
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.css']
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent {
+
+
 
   address = {
     bairro: '',
@@ -34,10 +36,9 @@ export class CreateAccountComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private router: Router
-  ) { }
+  ) {   }
 
-  ngOnInit(): void {
-  }
+  
 
   onSubmit(){
     try {

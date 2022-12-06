@@ -12,5 +12,9 @@
         <p>{{pedido.status}}</p>
         <p>{{pedido.valorTotal}}</p>
     </div>
-    <button (click)="devolver()">Devolver</button>
+    <form (ngSubmit)="onSubmit()">
+        <label>Quantos dias o carro foi usado?</label>
+        <input type="number" name="diasUsados" [(ngModel)]="devolucao.diasUsados">
+        <button type="submit">Devolver</button>
+    </form>
 </div>
