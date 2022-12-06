@@ -9,10 +9,6 @@ import { AccountService } from './account.service';
 })
 export class PedidoService {
 
-  status = {
-    novoStatus: 'FINALIZADO'
-  }
-
   pedido = {
     usuario: 0,
     carro: 0,
@@ -44,8 +40,8 @@ export class PedidoService {
     return this.http.get<any>(`${environment.api}/pedidos/userid/${id}`, {'headers': header})
   }
 
-  patchPedido(id: number, header: HttpHeaders){
-    return this.http.patch<any>(`${environment.api}/pedidos/id/${id}`, this.status, {'headers': header})
+  patchPedido(id: number, status: any, header: HttpHeaders){
+    return this.http.patch<any>(`${environment.api}/pedidos/id/${id}`, status, {'headers': header})
   }
 
 }

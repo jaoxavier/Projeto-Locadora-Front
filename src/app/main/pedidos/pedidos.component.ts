@@ -34,6 +34,12 @@ export class PedidosComponent implements OnInit {
     carro: this.carro
   }
 
+  devolucao = {
+    diasUsados: 0,
+    novoStatus: "FINALIZADO"
+  }
+
+  valorMulta: number;
 
 
   header = new HttpHeaders()
@@ -63,17 +69,26 @@ export class PedidosComponent implements OnInit {
           this.pedido.id = data[data.length-1].id;
           this.pedido.diasLocacao = data[data.length-1].diasLocacao;
           this.pedido.status = data[data.length-1].status;
-          this.pedido.valorTotal = data[data.length-1].valorTotal;
-          console.log(this.pedido);
-          
+          this.pedido.valorTotal = data[data.length-1].valorTotal;          
         }
       )
     }
   }
 
+  onSubmit(){
+    console.log(this.devolucao);
+    
+    this.devolver()
+  }
+
   devolver(){
-    this.pedidoService.patchPedido(this.pedido.id, this.header).subscribe()
-    window.location.reload()
+    this.pedidoService.patchPedido(this.pedido.id, this.devolucao, this.header).subscribe(
+      data => {
+        this.valorMulta = data.valorMulta;
+        alert(`Você precisa pagar R$${this.valorMulta},00 por atrasar a devolução do seu veículo`);
+        window.location.reload()
+      }
+    )
   }
 
 }
