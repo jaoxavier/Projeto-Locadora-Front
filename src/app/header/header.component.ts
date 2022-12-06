@@ -18,7 +18,8 @@ export class HeaderComponent implements OnInit {
 
   account = {
     id: '',
-    nomeUsuario: ''
+    nomeUsuario: '',
+    admin: false
   }
 
 
@@ -42,7 +43,11 @@ export class HeaderComponent implements OnInit {
           this.account.nomeUsuario = data.nomeUsuario;
         }
       )
-    }
 
+      this.accountService.getClienteIdUsuario(this.account.id, this.header).subscribe(
+        data=>{
+          this.account.admin = data.admin;
+      })
+    }
   }
 }

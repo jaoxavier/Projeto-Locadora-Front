@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="info-carro">
+    <div class="form-group">
+      <label>Modelo</label>
+      <input class="form-control" type="text" name="modelo" id="modelo" [(ngModel)]="carro.modelo" required>
+    </div>
+    <div class="form-group">
+      <label>Placa</label>
+      <input class="form-control" type="text" name="placa" id="placa" [(ngModel)]="carro.placa" required>
+    </div>
+    <div class="form-group">
+      <label>Categoria</label>
+      <input class="form-control" type="text" name="categoria" id="categoria" [(ngModel)]="carro.categoria" required>
+    </div>
+    <div class="form-group">
+      <label>Valor diária</label>
+      <input class="form-control" type="text" name="valorDiaria" id="valorDiaria" [(ngModel)]="carro.valorDiaria" required>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid" >Cadastrar carro</button>
+</form>

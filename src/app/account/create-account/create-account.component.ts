@@ -27,6 +27,7 @@ export class CreateAccountComponent implements OnInit {
     cnh: '',
     login: '',
     senha: '',
+    admin: true,
     address: this.address
   }
 

@@ -21,18 +21,30 @@ export class PerfilComponent implements OnInit {
     numero: '',
     login: ''
   }
-  account = {
-    nome: '',
+  usuario = {
+    nomeUsuario: '',
     cpf: '',
     cnh: '',
     login: '',
     address: this.address
   }
+
+  carro = {
+    id: 0,
+    modelo: '',
+    placa: '',
+    valorDiaria: '',
+    categoria: '',
+    disponivel: false
+  }
+
   pedido = {
-    carro: '',
-    diasLocacao: '',
-    valorTotal: '',
-    status: ''
+    id: 0,
+    diasLocacao: 0,
+    status: '',
+    valorTotal: 0,
+    usuario: this.usuario,
+    carro: this.carro
   }
 
   constructor(private addressService: AddressService, private accountService: AccountService, private pedidosService: PedidoService) {
@@ -45,27 +57,27 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
-      this.accountService.getUsuarioAccount(this.id, this.header)
-      .subscribe(data=>{
-        console.log(data);
-        this.account.cnh = data.cnh
-        this.account.cpf = data.cpf
-        this.account.login = data.email
-        this.account.nome = data.nomeUsuario
-      })
+      this.accountService.getUsuarioAccount(this.id, this.header).subscribe(
+        data=>{
+          this.usuario = data
+          console.log(this.usuario)
+        })
 
-      this.addressService.getAddress(this.id, this.header)
+        this.addressService.getAddress(this.id, this.header)
       .subscribe(
         data => {
           this.address = data[0]
           console.log(data)
-          console.log(this.address)
-        }
-      )
-      //this.pedidosService.postPedido(5, 10)
-      //this.pedidosService.getPedidosUsuario(this.id, this.header).subscribe(data=>{
-      //  console.log(data)
-      //})
+        })
+
+      this.pedidosService.getPedido(this.id, this.header).subscribe(
+        data => {
+          this.carro = data[data.length-1].carro
+          console.log(this.carro)
+          this.pedido = data[data.length-1];
+          console.log(this.pedido);
+        })
+
     } else {
       console.log("Erro, id nulo")
     }

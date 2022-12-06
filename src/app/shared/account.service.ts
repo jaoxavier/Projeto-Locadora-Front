@@ -47,6 +47,10 @@ export class AccountService {
     return result;
   }
 
+  getClienteIdUsuario(id: String, header: HttpHeaders): Observable<any>{
+    return this.http.get<any>(`${environment.api}/clientes/id/${id}`, {"headers": header})
+  }
+
   getUsuarioInfo(): Observable<any>{
     return this.http.get<any>(`${environment.api}/usuarios/login/${this.account.login}`,{'headers': this.header});
   }
