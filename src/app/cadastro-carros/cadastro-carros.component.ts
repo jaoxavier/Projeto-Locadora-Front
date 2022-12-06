@@ -43,6 +43,7 @@ export class CadastroCarrosComponent implements OnInit {
     this.carService.cadastrarCarro(this.carro, this.header).subscribe(
       data=>{
         console.log(data)
+        this.routerService.navigate(['carros'])
       })
     console.log(this.carro)
     this.carro = {
@@ -51,6 +52,5 @@ export class CadastroCarrosComponent implements OnInit {
       categoria:'',
       valorDiaria: 0
     }
-    this.routerService.navigate(['carros'])
   }
 }
