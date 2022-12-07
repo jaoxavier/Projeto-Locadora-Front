@@ -22,6 +22,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { PerfilComponent } from './main/perfil/perfil.component';
 import { PedidosComponent } from './main/pedidos/pedidos.component';
 import { NewOrderComponent } from './main/carros-list/new-order/new-order.component';
+import { CadastroCarrosComponent } from './cadastro-carros/cadastro-carros.component';
+import { PainelAdminComponent } from './painel-admin/painel-admin.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { NewOrderComponent } from './main/carros-list/new-order/new-order.compon
     PerfilComponent,
     PedidosComponent,
     NewOrderComponent,
+    CadastroCarrosComponent,
+    PainelAdminComponent,
     
   ],
   imports: [

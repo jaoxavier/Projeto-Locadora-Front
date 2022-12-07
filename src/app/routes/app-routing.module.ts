@@ -10,6 +10,8 @@ import { NewOrderComponent } from '../main/carros-list/new-order/new-order.compo
 import { PerfilComponent } from '../main/perfil/perfil.component';
 import { PedidosComponent } from '../main/pedidos/pedidos.component';
 import { AuthGuard } from '../shared/auth.guard';
+import { PainelAdminComponent } from '../painel-admin/painel-admin.component';
+import { CadastroCarrosComponent } from '../cadastro-carros/cadastro-carros.component';
 
 
 const routes: Routes = [
@@ -46,6 +48,14 @@ const routes: Routes = [
   },
   {
     path: 'perfil', component: PerfilComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin', component: PainelAdminComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'cadastro-carros', component: CadastroCarrosComponent,
     canActivate: [AuthGuard]
   }
 

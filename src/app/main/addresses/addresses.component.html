@@ -1,11 +1,10 @@
 <div class="novoEndereco">
-    <button routerLink="/new-address" routerLinkActive="active" >Novo endereço</button>
+    <button routerLink="/new-address" routerLinkActive="active" >Atualizar endereço</button>
 </div>
 
 <div class="addresses" *ngFor="let address of addresses">
     <p>Rua: {{address.rua}}, {{address.numero}} - Bairro: {{address.bairro}}</p>
     <p>{{address.cidade}}, {{address.estado}}</p>
     <p>CEP: {{address.cep}}</p>
-    <button (click)="deleteAddress(address.id)">DELETAR ENDEREÇO</button>
 </div>
   

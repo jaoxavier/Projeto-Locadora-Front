@@ -11,4 +11,7 @@
   <div *ngIf="logado">
     <a routerLink="/perfil" routerLinkActive='active'>Olá {{account.nomeUsuario}}</a>
   </div>
+  <div *ngIf="logado && account.admin">
+    <a routerLink="/admin" routerLinkActive='active'>Painel administrativo</a>
+  </div>
 </mat-toolbar>

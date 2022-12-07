@@ -1,13 +1,13 @@
 <div class="perfil">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Olá {{account.nome}}</mat-card-title>
+      <mat-card-title>Olá {{usuario.nomeUsuario}}</mat-card-title>
     </mat-card-header>
     <mat-card-title>Dados pessoais:</mat-card-title>
     <mat-card-content>
-      <p>Nome completo: {{account.nome}}</p>
-      <p>CPF: {{account.cpf}}</p>
-      <p>Número da CNH: {{account.cnh}}</p>
+      <p>Nome completo: {{usuario.nomeUsuario}}</p>
+      <p>CPF: {{usuario.cpf}}</p>
+      <p>Número da CNH: {{usuario.cnh}}</p>
     </mat-card-content>
   </mat-card>
   <mat-card>
@@ -27,13 +27,13 @@
     <mat-card-header>
       <mat-card-title>Pedidos:</mat-card-title>
     </mat-card-header>
-    <mat-card-content *ngIf="pedido.carro">
-      <p>Carro: {{pedido.carro}}</p>
+    <mat-card-content *ngIf="pedido.id != 0">
+      <p>Carro: {{pedido.carro.modelo}}</p>
       <p>Dias locados: {{pedido.diasLocacao}}</p>
       <p>Valor do pedido: {{pedido.valorTotal}}</p>
       <p>Status do pedido: {{pedido.status}}</p>
     </mat-card-content>
-    <mat-card-content *ngIf="!pedido.carro">
+    <mat-card-content *ngIf="pedido.id == 0">
       <p>Nenhum pedido realizado</p>
     </mat-card-content>
   </mat-card>

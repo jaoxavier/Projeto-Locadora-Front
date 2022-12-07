@@ -16,7 +16,7 @@ export class PedidosComponent implements OnInit {
     placa: '',
     valorDiaria: '',
     categoria: '',
-    disponivel: false    
+    disponivel: false
   }
 
   usuario = {
@@ -61,15 +61,15 @@ export class PedidosComponent implements OnInit {
           this.carro.valorDiaria = data[data.length-1].carro.valorDiaria;
           this.carro.categoria = data[data.length-1].carro.categoria;
           this.carro.disponivel = data[data.length-1].carro.disponivel;
-          
+
           this.usuario.id = data[data.length-1].usuario.id;
           this.usuario.nome = data[data.length-1].usuario.nome;
           this.usuario.cnh = data[data.length-1].usuario.cnh;
-          
+
           this.pedido.id = data[data.length-1].id;
           this.pedido.diasLocacao = data[data.length-1].diasLocacao;
           this.pedido.status = data[data.length-1].status;
-          this.pedido.valorTotal = data[data.length-1].valorTotal;          
+          this.pedido.valorTotal = data[data.length-1].valorTotal;
         }
       )
     }
@@ -77,7 +77,7 @@ export class PedidosComponent implements OnInit {
 
   onSubmit(){
     console.log(this.devolucao);
-    
+
     this.devolver()
   }
 
