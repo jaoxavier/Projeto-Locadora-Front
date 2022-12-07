@@ -36,15 +36,15 @@ export class CreateAccountComponent {
   constructor(
     private accountService: AccountService,
     private router: Router
-  ) {   }
-
-  
+  ) {}
 
   onSubmit(){
     try {
-      const result = this.accountService.createAccount(this.account).subscribe(data => {
-        console.log(this.account)
-        console.log(this.address)
+      this.accountService.createAccount(this.account).subscribe(
+        data => {
+          console.log("Criando conta retorno: ", data)
+          console.log("Criando conta: ", this.account)
+          console.log("Conta criada com o endereço: ", this.address)
       })
       this.router.navigate(['login']);
     } catch (error) {
