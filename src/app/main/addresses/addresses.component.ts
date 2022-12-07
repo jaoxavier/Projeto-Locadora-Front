@@ -45,9 +45,4 @@ export class AddressesComponent implements OnInit {
     }
   }
 
-  deleteAddress(id: String){
-    this.addressService.deleteAddress(id, this.header).subscribe();
-    window.location.reload()
-  }
-
 }

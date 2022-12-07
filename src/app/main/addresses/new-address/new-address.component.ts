@@ -37,7 +37,7 @@ export class NewAddressComponent implements OnInit {
 
   onSubmit(){
     try {
-      const result = this.addressService.postAddress(this.address, this.header).subscribe(
+      const result = this.addressService.patchAddress(this.address, this.header).subscribe(
         data => console.log(data)
       )
       this.router.navigate(['/addresses']);

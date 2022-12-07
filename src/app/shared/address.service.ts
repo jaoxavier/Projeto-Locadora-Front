@@ -17,8 +17,9 @@ export class AddressService {
       return result;
     }
 
-    postAddress(address: any, header: HttpHeaders): Observable<any> {
-      const result = this.http.post<any>(`${environment.api}/address`, address, {'headers': header})
+    patchAddress(address: any, header: HttpHeaders): Observable<any> {
+      const id = window.localStorage.getItem('id');
+      const result = this.http.patch<any>(`${environment.api}/usuarios/id/${id}`, address, {'headers': header})
       return result;
     }
 
