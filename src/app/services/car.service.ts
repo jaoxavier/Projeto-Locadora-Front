@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CarroModelo } from '../model/CarroModelo';
+import { CarroModeloPost } from '../model/CarroModelo';
+import { CarroModeloPut } from '../model/CarroModeloPut'
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,11 @@ export class CarService {
     return this.http.get<any>(`${environment.api}/carros/id/${id}`);
   }
 
-  cadastrarCarro(carro: CarroModelo, header: HttpHeaders){
+  cadastrarCarro(carro: CarroModeloPost, header: HttpHeaders){
     return this.http.post<any>(`${environment.api}/carros/id`, carro, {'headers': header});
+  }
+
+  atualizarCarro(id: number, carro: CarroModeloPut, header: HttpHeaders){
+    return this.http.put<any>(`${environment.api}/carros/id/${id}`, carro, {'headers': header})
   }
 }

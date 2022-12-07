@@ -1,0 +1,34 @@
+<form (ngSubmit)="onSubmit()">
+  <h2>Atualizar carro existente</h2>
+  <div class="atualizar-carro">
+      <label>Selecione o carro</label>
+      <mat-select name="carroSelecionado" class="carro-select" [(value)]="carroSelecionado" (selectionChange)="onChange($event)">
+        <mat-option *ngFor="let carro of carros" [value]="carro">
+          {{carro.modelo}} - {{carro.placa}}
+        </mat-option>
+      </mat-select>
+    <div *ngIf="carroSelecionado">
+      <div>
+        <label>Modelo: </label>
+        <input matInput type="text" [value]="carroSelecionado.modelo">
+      </div>
+      <div>
+        <label>Placa: </label>
+        <input matInput type="text" [value]="carroSelecionado.placa">
+      </div>
+      <div>
+        <label>Valor da diária: </label>
+        <input matInput type="text" [value]="carroSelecionado.valorDiaria">
+      </div>
+      <div>
+        <label>Categoria: </label>
+        <input matInput type="text" [value]="carroSelecionado.categoria">
+      </div>
+      <div>
+        <label>Disponível: </label>
+        <input type="checkbox" [value]="carroSelecionado.disponivel">
+      </div>
+      <button type="submit">Atualizar</button>
+    </div>
+  </div>
+</form>

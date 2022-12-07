@@ -24,6 +24,10 @@ import { PedidosComponent } from './main/pedidos/pedidos.component';
 import { NewOrderComponent } from './main/carros-list/new-order/new-order.component';
 import { CadastroCarrosComponent } from './cadastro-carros/cadastro-carros.component';
 import { PainelAdminComponent } from './painel-admin/painel-admin.component';
+import { AtualizarCarrosComponent } from './atualizar-carros/atualizar-carros.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { PainelAdminComponent } from './painel-admin/painel-admin.component';
     NewOrderComponent,
     CadastroCarrosComponent,
     PainelAdminComponent,
-    
+    AtualizarCarrosComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,10 @@ import { PainelAdminComponent } from './painel-admin/painel-admin.component';
     RouterModule,
     FormsModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

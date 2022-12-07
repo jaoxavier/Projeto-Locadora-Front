@@ -1,0 +1,7 @@
+.form-group{
+  display: flex;
+  flex-direction: column;
+}
+.carro-select{
+  width: 150px;
+}
