@@ -13,6 +13,7 @@ import { AuthGuard } from '../shared/auth.guard';
 import { PainelAdminComponent } from '../painel-admin/painel-admin.component';
 import { CadastroCarrosComponent } from '../cadastro-carros/cadastro-carros.component';
 import { AtualizarCarrosComponent } from '../atualizar-carros/atualizar-carros.component';
+import { GerenciarUsuariosComponent } from '../gerenciar-usuarios/gerenciar-usuarios.component';
 
 
 const routes: Routes = [
@@ -61,6 +62,10 @@ const routes: Routes = [
   },
   {
     path: 'atualizar-carros', component: AtualizarCarrosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'gerenciar-usuarios', component: GerenciarUsuariosComponent,
     canActivate: [AuthGuard]
   }
 

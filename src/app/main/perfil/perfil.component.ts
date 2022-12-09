@@ -72,10 +72,12 @@ export class PerfilComponent implements OnInit {
 
       this.pedidosService.getPedido(this.id, this.header).subscribe(
         data => {
-          this.carro = data[data.length-1].carro
-          console.log(this.carro)
-          this.pedido = data[data.length-1];
-          console.log(this.pedido);
+          if(data.length != 0){
+            this.carro = data[data.length-1].carro
+            console.log(this.carro)
+            this.pedido = data[data.length-1];
+            console.log(this.pedido);
+          }
         })
 
     } else {

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import jwt_decode from 'jwt-decode';
+import { Account } from '../model/Account';
+import { AccountPut } from '../model/AccountPut';
 
 @Injectable({
   providedIn: 'root'
@@ -47,7 +49,15 @@ export class AccountService {
     return result;
   }
 
-  getClienteIdUsuario(id: String, header: HttpHeaders): Observable<any>{
+  atualizarUsuario(id: number, usuario: AccountPut, header: HttpHeaders){
+    return this.http.put<any>(`${environment.api}/usuarios/id/${id}`, usuario, {'headers': header})
+  }
+
+  getUsuarios(header: HttpHeaders): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios`, {"headers": header})
+  }
+
+  getClienteIdUsuario(id: number, header: HttpHeaders): Observable<any>{
     return this.http.get<any>(`${environment.api}/clientes/id/${id}`, {"headers": header})
   }
 

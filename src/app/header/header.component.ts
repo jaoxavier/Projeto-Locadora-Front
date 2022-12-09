@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
         }
       )
 
-      this.accountService.getClienteIdUsuario(this.account.id, this.header).subscribe(
+      this.accountService.getClienteIdUsuario(parseInt(this.account.id), this.header).subscribe(
         data=>{
           this.account.admin = data.admin;
       })

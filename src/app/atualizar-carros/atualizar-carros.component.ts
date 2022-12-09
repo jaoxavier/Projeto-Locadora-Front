@@ -49,7 +49,7 @@ export class AtualizarCarrosComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
-      this.accountService.getClienteIdUsuario(this.id, this.header).subscribe(
+      this.accountService.getClienteIdUsuario(parseInt(this.id), this.header).subscribe(
         data=>{
           this.admin = data.admin
           if(!this.admin){
