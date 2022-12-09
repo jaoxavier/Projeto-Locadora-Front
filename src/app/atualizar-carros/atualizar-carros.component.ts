@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Carro } from '../model/Carro';
 import { CarService } from '../services/car.service';
@@ -12,20 +13,39 @@ import { AccountService } from '../shared/account.service';
 })
 export class AtualizarCarrosComponent implements OnInit {
 
+  carroSelecionado: Carro = {
+    id: 0,
+    modelo: '',
+    placa: '',
+    valorDiaria: 0,
+    categoria: '',
+    disponivel: true
+  }
+
+  carroForm: FormGroup
+
   constructor(
     private accountService: AccountService,
     private carService: CarService,
-    private routerService: Router) { }
+    private routerService: Router,
+    private fb: FormBuilder) {
+      this.carroForm = this.fb.group({
+        modelo: new FormControl(this.carroSelecionado.modelo),
+        placa: new FormControl(this.carroSelecionado.placa),
+        valorDiaria: new FormControl(this.carroSelecionado.valorDiaria),
+        categoria: new FormControl(this.carroSelecionado.categoria),
+        disponivel: new FormControl(this.carroSelecionado.disponivel)
+      })
+    }
 
-  id = window.localStorage.getItem('id')
+    id = window.localStorage.getItem('id')
 
-  header = new HttpHeaders()
-  .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
+    header = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
 
-  admin = false
+    admin = false
 
-  carros: Carro[]
-  carroSelecionado: Carro
+    carros: Carro[]
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
@@ -43,16 +63,15 @@ export class AtualizarCarrosComponent implements OnInit {
       }
     )
   }
-  onChange(event: any){
-    console.log(event)
-    console.log(this.carroSelecionado)
-  }
+
   onSubmit(){
+    console.log(this.carroSelecionado)
     this.carService.atualizarCarro(this.carroSelecionado.id, this.carroSelecionado, this.header).subscribe(
       data=>{
         console.log(data)
+        this.carroForm.reset();
+        this.routerService.navigate(['carros'])
       }
     )
   }
-
 }

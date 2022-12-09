@@ -1,34 +1,119 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit()" [formGroup]="carroForm">
   <h2>Atualizar carro existente</h2>
   <div class="atualizar-carro">
       <label>Selecione o carro</label>
-      <mat-select name="carroSelecionado" class="carro-select" [(value)]="carroSelecionado" (selectionChange)="onChange($event)">
+      <mat-select name="carroSelecionado" class="carro-select" [(value)]="carroSelecionado">
         <mat-option *ngFor="let carro of carros" [value]="carro">
-          {{carro.modelo}} - {{carro.placa}}
+          {{carro.modelo | uppercase}} - {{carro.placa | uppercase}}
         </mat-option>
       </mat-select>
     <div *ngIf="carroSelecionado">
       <div>
         <label>Modelo: </label>
-        <input matInput type="text" [value]="carroSelecionado.modelo">
+        <input matInput formControlName="modelo" type="text" [value]="carroSelecionado.modelo" [(ngModel)]="carroSelecionado.modelo">
       </div>
       <div>
         <label>Placa: </label>
-        <input matInput type="text" [value]="carroSelecionado.placa">
+        <input matInput formControlName="placa" type="text" [value]="carroSelecionado.placa" [(ngModel)]="carroSelecionado.placa">
       </div>
       <div>
         <label>Valor da diária: </label>
-        <input matInput type="text" [value]="carroSelecionado.valorDiaria">
+        <input matInput formControlName="valorDiaria" type="number" [value]="carroSelecionado.valorDiaria" [(ngModel)]="carroSelecionado.valorDiaria">
       </div>
       <div>
         <label>Categoria: </label>
-        <input matInput type="text" [value]="carroSelecionado.categoria">
+        <input matInput formControlName="categoria" type="text" [value]="carroSelecionado.categoria" [(ngModel)]="carroSelecionado.categoria">
       </div>
       <div>
         <label>Disponível: </label>
-        <input type="checkbox" [value]="carroSelecionado.disponivel">
+        <input formControlName="disponivel" type="checkbox" [value]="carroSelecionado.disponivel" [(ngModel)]="carroSelecionado.disponivel">
       </div>
       <button type="submit">Atualizar</button>
     </div>
   </div>
 </form>
+
+<!--
+<form novalidate  (ngSubmit)="onSubmit()">
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="modelo"
+            type="text"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="lastname"
+            placeholder="Last Name"
+            type="text"
+            required
+          />
+          <mat-error *ngIf="formErrors.lastname">{{
+            formErrors.lastname
+          }}</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="telnum"
+            placeholder="Tel. Number"
+            type="tel"
+            pattern="[0-9]*"
+            required
+          />
+          <mat-error *ngIf="formErrors.telnum">{{
+            formErrors.telnum
+          }}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Email"
+            type="email"
+            email
+            required
+          />
+          <mat-error *ngIf="formErrors.email">{{ formErrors.email }}</mat-error>
+        </mat-form-field>
+      </p>
+      <table class="form-size">
+        <td>
+          <mat-slide-toggle formControlName="agree"
+            >May we contact you?</mat-slide-toggle
+          >
+        </td>
+        <td>
+          <mat-select placeholder="How?" formControlName="contacttype">
+            <mat-option *ngFor="let ctype of contactType" [value]="ctype">
+              {{ ctype }}
+            </mat-option>
+          </mat-select>
+        </td>
+      </table>
+      <p>
+        <mat-form-field class="full-width">
+          <textarea
+            matInput
+            formControlName="message"
+            placeholder="Your Feedback"
+            rows="12"
+          ></textarea>
+        </mat-form-field>
+      </p>
+      <button
+        type="submit"
+        mat-button
+        class="background-primary text-floral-white"
+        [disabled]="feedbackForm.invalid"
+      >
+        Submit
+      </button>
+</form>
+-->
