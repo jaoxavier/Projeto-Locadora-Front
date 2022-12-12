@@ -16,8 +16,6 @@ import { CreateAccountComponent } from './account/create-account/create-account.
 import { AuthenticationComponent } from './layout/authentication/authentication.component';
 import { HomeComponent } from './layout/home/home.component';
 import { CarrosListComponent } from './main/carros-list/carros-list.component';
-import { AddressesComponent } from './main/addresses/addresses.component';
-import { NewAddressComponent } from './main/addresses/new-address/new-address.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PerfilComponent } from './main/perfil/perfil.component';
 import { PedidosComponent } from './main/pedidos/pedidos.component';
@@ -40,8 +38,6 @@ import { GerenciarUsuariosComponent } from './gerenciar-usuarios/gerenciar-usuar
     AuthenticationComponent,
     HomeComponent,
     CarrosListComponent,
-    AddressesComponent,
-    NewAddressComponent,
     PerfilComponent,
     PedidosComponent,
     NewOrderComponent,

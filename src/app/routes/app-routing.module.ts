@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from '../account/create-account/create-account.component';
 import { LoginComponent } from '../account/login/login.component';
 import { HomeComponent } from '../layout/home/home.component';
-import { AddressesComponent } from '../main/addresses/addresses.component';
-import { NewAddressComponent } from '../main/addresses/new-address/new-address.component';
 import { CarrosListComponent } from '../main/carros-list/carros-list.component';
 import { NewOrderComponent } from '../main/carros-list/new-order/new-order.component';
 import { PerfilComponent } from '../main/perfil/perfil.component';
@@ -34,14 +32,6 @@ const routes: Routes = [
   },
   {
     path: 'new-order', component: NewOrderComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'addresses', component: AddressesComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'new-address', component: NewAddressComponent,
     canActivate: [AuthGuard]
   },
   {

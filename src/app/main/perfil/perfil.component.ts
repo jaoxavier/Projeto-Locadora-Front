@@ -1,9 +1,8 @@
 import { HttpHeaders } from '@angular/common/http';
-import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AccountPut } from 'src/app/model/AccountPut';
+import { Address } from 'src/app/model/Address';
 import { AccountService } from 'src/app/shared/account.service';
 import { AddressService } from 'src/app/shared/address.service';
 import { PedidoService } from 'src/app/shared/pedido.service';
@@ -53,15 +52,17 @@ export class PerfilComponent implements OnInit {
   private id = window.localStorage.getItem('id')
 
   atualizandoDados: boolean = false
+  atualizandoEndereco: boolean = false
   perfilForm: FormGroup
+  enderecoForm: FormGroup
   usuarioModificando: AccountPut
+  enderecoModificando: Address
 
   constructor(
     private addressService: AddressService,
     private accountService: AccountService,
     private pedidosService: PedidoService,
-    private fb: FormBuilder,
-    private router: Router) {
+    private fb: FormBuilder) {
   }
 
   header = new HttpHeaders()
@@ -79,13 +80,32 @@ export class PerfilComponent implements OnInit {
       nome: new FormControl(this.usuarioModificando.nome),
       cpf: new FormControl(this.usuarioModificando.cpf),
       cnh: new FormControl(this.usuarioModificando.cnh),
-      email: new FormControl(this.usuarioModificando.login),
+      email: new FormControl({value: this.usuarioModificando.login, disabled: true}),
       senha: new FormControl(this.usuarioModificando.senha)
     })
     this.atualizandoDados = true
   }
 
-  onSubmit(){
+  atualizarEndereco(){
+    this.enderecoModificando.login = this.usuario.login
+    this.enderecoModificando.cep = this.address.cep
+    this.enderecoModificando.bairro = this.address.bairro
+    this.enderecoModificando.cidade = this.address.cidade
+    this.enderecoModificando.numero = this.address.numero
+    this.enderecoModificando.rua = this.address.rua
+    this.enderecoModificando.estado = this.address.estado
+    this.enderecoForm = this.fb.group({
+      cep: new FormControl(this.enderecoModificando.cep),
+      bairro: new FormControl(this.enderecoModificando.bairro),
+      cidade: new FormControl(this.enderecoModificando.cidade),
+      numero: new FormControl(this.enderecoModificando.numero),
+      rua: new FormControl(this.enderecoModificando.rua),
+      estado: new FormControl(this.enderecoModificando.estado)
+    })
+    this.atualizandoEndereco = true
+  }
+
+  onSubmitPerfil(){
     if(this.id != null){
       this.accountService.atualizarUsuario(parseInt(this.id), this.usuarioModificando, this.header).subscribe(
         data =>{
@@ -97,6 +117,31 @@ export class PerfilComponent implements OnInit {
     }
   }
 
+  onSubmitEndereco(){
+    if(this.id != null){
+      this.addressService.patchAddress(this.enderecoModificando, this.header).subscribe(
+        data =>{
+          console.log(data)
+          this.atualizandoEndereco = false
+          this.ngOnInit()
+        }
+      )
+    }
+  }
+
+  buscaCep(){
+    this.accountService.getCep(this.enderecoModificando.cep).subscribe(
+      data => {
+        this.enderecoModificando.bairro = data.bairro;
+        this.enderecoModificando.cidade = data.localidade;
+        this.enderecoModificando.rua = data.logradouro;
+        this.enderecoModificando.estado = data.uf;
+        this.enderecoModificando.cep = data.cep;
+        this.enderecoModificando.login = this.usuario.login;
+      }
+    )
+  }
+
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
       this.accountService.getUsuarioAccount(this.id, this.header).subscribe(
@@ -104,6 +149,15 @@ export class PerfilComponent implements OnInit {
           this.usuario = data
           this.usuario.login = data.email
           console.log(this.usuario)
+          this.enderecoModificando = {
+            login: '',
+            cep: '',
+            bairro: '',
+            cidade: '',
+            numero: '',
+            rua: '',
+            estado: ''
+          }
           this.usuarioModificando = {
             id: 0,
             nome: '',
