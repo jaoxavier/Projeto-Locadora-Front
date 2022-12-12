@@ -1,5 +1,5 @@
 <div class="perfil">
-  <mat-card>
+  <mat-card *ngIf="!atualizandoDados">
     <mat-card-header>
       <mat-card-title>Olá {{usuario.nomeUsuario}}</mat-card-title>
     </mat-card-header>
@@ -9,6 +9,35 @@
       <p>CPF: {{usuario.cpf}}</p>
       <p>Número da CNH: {{usuario.cnh}}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <button (click)="atualizarDados()">Atualizar dados</button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="atualizandoDados">
+    <form (ngSubmit)="onSubmit()" [formGroup]="perfilForm">
+      <h2>Atualizar cadastro</h2>
+      <div>
+        <label>Nome: </label>
+        <input matInput formControlName="nome" type="text" [(ngModel)]="usuarioModificando.nome">
+      </div>
+      <div>
+        <label>CPF: </label>
+        <input matInput formControlName="cpf" type="text" [(ngModel)]="usuarioModificando.cpf">
+      </div>
+      <div>
+        <label>CNH: </label>
+        <input matInput formControlName="cnh" type="text" [(ngModel)]="usuarioModificando.cnh">
+      </div>
+      <div>
+        <label>Email: </label>
+        <input matInput formControlName="email" type="text" [(ngModel)]="usuarioModificando.login">
+      </div>
+      <div>
+        <label>Senha: </label>
+        <input matInput formControlName="senha" type="password" [(ngModel)]="usuarioModificando.senha">
+      </div>
+      <button type="submit">Salvar</button>
+    </form>
   </mat-card>
   <mat-card>
     <mat-card-header>
