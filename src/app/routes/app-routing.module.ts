@@ -14,6 +14,7 @@ import { PainelAdminComponent } from '../painel-admin/painel-admin.component';
 import { CadastroCarrosComponent } from '../cadastro-carros/cadastro-carros.component';
 import { AtualizarCarrosComponent } from '../atualizar-carros/atualizar-carros.component';
 import { GerenciarUsuariosComponent } from '../gerenciar-usuarios/gerenciar-usuarios.component';
+import { AlugadosComponent } from '../alugados/alugados.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,10 @@ const routes: Routes = [
   },
   {
     path: 'gerenciar-usuarios', component: GerenciarUsuariosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'relatorio-alugados', component: AlugadosComponent,
     canActivate: [AuthGuard]
   }
 

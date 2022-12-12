@@ -1,0 +1,11 @@
+.carros-alugados {
+    display: grid;
+    place-items: center;
+}
+
+.carro-card {
+    display: grid;
+    place-items: center;
+    margin-top: 10px;
+    width: 20rem;
+}
