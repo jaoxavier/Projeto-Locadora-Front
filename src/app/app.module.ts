@@ -31,6 +31,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GerenciarUsuariosComponent } from './gerenciar-usuarios/gerenciar-usuarios.component';
 import { AlugadosComponent } from './alugados/alugados.component';
+import { DisponiveisComponent } from './disponiveis/disponiveis.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AlugadosComponent } from './alugados/alugados.component';
     AtualizarCarrosComponent,
     GerenciarUsuariosComponent,
     AlugadosComponent,
+    DisponiveisComponent,
 
   ],
   imports: [

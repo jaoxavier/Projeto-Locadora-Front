@@ -26,6 +26,10 @@ export class CarService {
     return this.http.get<any>(`${environment.api}/carros/locados`, {'headers': header})
   }
 
+  getCarrosDisponiveis(header: HttpHeaders){
+    return this.http.get<any>(`${environment.api}/carros/disponiveis`, {'headers': header})
+  }
+
   cadastrarCarro(carro: CarroModeloPost, header: HttpHeaders){
     return this.http.post<any>(`${environment.api}/carros/id`, carro, {'headers': header});
   }
