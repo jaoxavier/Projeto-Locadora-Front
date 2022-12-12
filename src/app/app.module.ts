@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -28,6 +28,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GerenciarUsuariosComponent } from './gerenciar-usuarios/gerenciar-usuarios.component';
+import { AlugadosComponent } from './alugados/alugados.component';
+import { DisponiveisComponent } from './disponiveis/disponiveis.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { GerenciarUsuariosComponent } from './gerenciar-usuarios/gerenciar-usuar
     PainelAdminComponent,
     AtualizarCarrosComponent,
     GerenciarUsuariosComponent,
+    AlugadosComponent,
+    DisponiveisComponent,
 
   ],
   imports: [

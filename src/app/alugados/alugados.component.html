@@ -1,0 +1,18 @@
+<div class="carros-alugados" *ngIf="carros">
+    <h1>CARROS ALUGADOS</h1>
+    <mat-card *ngFor="let carro of carros" class="carro-card">
+        <mat-card-header>
+          <mat-card-title>{{carro.modelo}}</mat-card-title>
+          <mat-card-subtitle>{{carro.categoria}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>Placa: {{carro.placa}}</p>
+            <p>Valor por dia: {{carro.valorDiaria}}</p>
+            <p>Disponibilidade: {{carro.disponivel}}</p>
+        </mat-card-content>
+      </mat-card>
+</div>
+
+<div class="not-found" *ngIf="!carros">
+  <h1>SEM CARROS ALUGADOS</h1>
+</div>
