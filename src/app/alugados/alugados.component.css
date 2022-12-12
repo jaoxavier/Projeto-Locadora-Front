@@ -3,6 +3,11 @@
     place-items: center;
 }
 
+.not-found{
+    display: grid;
+    place-items: center;
+}
+
 .carro-card {
     display: grid;
     place-items: center;

@@ -1,4 +1,5 @@
-<div class="carros-alugados">
+<div class="carros-alugados" *ngIf="carros">
+    <h1>CARROS ALUGADOS</h1>
     <mat-card *ngFor="let carro of carros" class="carro-card">
         <mat-card-header>
           <mat-card-title>{{carro.modelo}}</mat-card-title>
@@ -10,4 +11,8 @@
             <p>Disponibilidade: {{carro.disponivel}}</p>
         </mat-card-content>
       </mat-card>
+</div>
+
+<div class="not-found" *ngIf="!carros">
+  <h1>SEM CARROS ALUGADOS</h1>
 </div>
