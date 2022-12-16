@@ -1,6 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { CarService } from 'src/app/services/car.service';
 import { Carro } from 'src/app/model/Carro';
+import { MatDialog } from '@angular/material/dialog';
+import { NewOrderComponent } from './new-order/new-order.component';
 
 @Component({
   selector: 'app-carros-list',
@@ -13,7 +15,8 @@ export class CarrosListComponent implements OnInit {
   carro: Carro;
 
   constructor(
-    private carService: CarService
+    private carService: CarService,
+    private dialogRef: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -24,11 +27,14 @@ export class CarrosListComponent implements OnInit {
     this.carService.getCarros().subscribe(
       data => {
         this.carros = data
-        console.log(data);
     })
   }
 
-  getCarroId(id: number){
-    window.localStorage.setItem('idCarro', id.toString())
+  openDialog(idCarro: number){
+    this.dialogRef.open(NewOrderComponent, {
+      data : {
+        id: idCarro,
+      }
+    })
   }
 }

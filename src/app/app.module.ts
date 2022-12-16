@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -64,7 +65,8 @@ import { DisponiveisComponent } from './disponiveis/disponiveis.component';
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

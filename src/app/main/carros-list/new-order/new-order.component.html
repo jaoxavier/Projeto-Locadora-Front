@@ -1,5 +1,14 @@
 <div class="login">
     <h2 class="text-center">Entrar</h2>
+
+    <div class="carInfo" *ngIf="carro">
+        <p>Modelo: {{carro.modelo}}</p>
+        <p>Placa: {{carro.placa}}</p>
+        <p>Categoria: {{carro.categoria}}</p>
+        <p>Valor Diária: {{carro.valorDiaria}}</p>
+        <p>Total: {{total}}</p>
+    </div>
+
     <form (ngSubmit)="onSubmit()" #form="ngForm">
         <div class="form-group">
             <label>Por quantos dias deseja alugar?</label>
