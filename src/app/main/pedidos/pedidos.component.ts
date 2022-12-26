@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/shared/account.service';
 import { PedidoService } from 'src/app/shared/pedido.service';
 
@@ -39,7 +40,9 @@ export class PedidosComponent implements OnInit {
     novoStatus: "FINALIZADO"
   }
 
-  valorMulta: number;
+  multaDTO = {
+    valorMulta: 0
+  }
 
 
   header = new HttpHeaders()
@@ -76,19 +79,23 @@ export class PedidosComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.devolucao);
-
-    this.devolver()
+    this.devolver();
   }
-
-  devolver(){
+  
+  async devolver(){
     this.pedidoService.patchPedido(this.pedido.id, this.devolucao, this.header).subscribe(
       data => {
-        this.valorMulta = data.valorMulta;
-        alert(`Você precisa pagar R$${this.valorMulta},00 por atrasar a devolução do seu veículo`);
-        window.location.reload()
+        this.multaDTO.valorMulta = data.valorMulta;
+        
+        if(this.multaDTO.valorMulta <= 0 || this.multaDTO.valorMulta == undefined){
+          alert("Carro devolvido com sucesso!")
+          window.location.reload();
+        }else{
+          alert(`Você precisa pagar R$${this.multaDTO.valorMulta},00 por atrasar a devolução do seu veículo`);
+          window.location.reload()
+        }
       }
-    )
+    );
   }
 
 }

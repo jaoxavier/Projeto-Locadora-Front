@@ -3,7 +3,10 @@
   margin: 10px 0 10px 0;
 }
 .perfil{
+  margin-top: 4rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
+
+
 

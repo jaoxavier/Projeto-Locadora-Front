@@ -1,8 +1,8 @@
 .car-container {
-    height: 80%;
     width: 80%;
 }
 
 .car-image{
-    height: 60%;
+    aspect-ratio: 4/2;
+    object-fit: cover;
 }
