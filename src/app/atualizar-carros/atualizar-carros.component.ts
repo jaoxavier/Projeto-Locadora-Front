@@ -17,6 +17,7 @@ export class AtualizarCarrosComponent implements OnInit {
     id: 0,
     modelo: '',
     placa: '',
+    imageUrl: '',
     valorDiaria: 0,
     categoria: '',
     disponivel: true
@@ -33,6 +34,7 @@ export class AtualizarCarrosComponent implements OnInit {
         modelo: new FormControl(this.carroSelecionado.modelo),
         placa: new FormControl(this.carroSelecionado.placa),
         valorDiaria: new FormControl(this.carroSelecionado.valorDiaria),
+        imageUrl: new FormControl(this.carroSelecionado.imageUrl),
         categoria: new FormControl(this.carroSelecionado.categoria),
         disponivel: new FormControl(this.carroSelecionado.disponivel)
       })

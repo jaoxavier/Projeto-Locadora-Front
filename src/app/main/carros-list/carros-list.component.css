@@ -1,12 +1,8 @@
-
-.card-carro{
-  width: 60%;
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.car-container {
+    height: 80%;
+    width: 80%;
 }
-:host /deep/ .mat-card-header-text {
-  margin: 0;
+
+.car-image{
+    height: 60%;
 }

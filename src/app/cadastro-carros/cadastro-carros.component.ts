@@ -27,6 +27,7 @@ export class CadastroCarrosComponent implements OnInit {
     modelo:'',
     placa:'',
     categoria:'',
+    imageUrl: '',
     valorDiaria: 0
   }
 
@@ -55,6 +56,7 @@ export class CadastroCarrosComponent implements OnInit {
       modelo:'',
       placa:'',
       categoria:'',
+      imageUrl: '',
       valorDiaria: 0
     }
   }

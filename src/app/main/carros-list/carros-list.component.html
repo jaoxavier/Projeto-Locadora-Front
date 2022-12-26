@@ -1,18 +1,14 @@
-<mat-grid-list cols="4" >
-  <div *ngFor="let carro of carros">
+<mat-grid-list cols="4">
+  <div *ngFor="let carro of carros" >
     <mat-grid-tile *ngIf="carro.disponivel">
-      <mat-card class="card-carro">
-        <mat-card-header class="card-carro-header">
-          <h3>{{carro.modelo}}</h3>
+      <mat-card class="car-container">
+        <mat-card-header>
+          <mat-card-title>{{carro.modelo}}</mat-card-title>
+          <mat-card-subtitle>{{carro.categoria}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
-          <p>Categoria: {{carro.categoria}}</p>
-          <p>Valor da diária: {{carro.valorDiaria}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>
-            <span (click)="openDialog(carro.id)">Alugar</span>
-          </button>
+        <img mat-card-image class="car-image" src="{{carro.imageUrl}}" alt="carro do modelo {{carro.modelo}}">
+        <mat-card-actions align="end">
+          <button mat-button (click)="openDialog(carro.id)">Alugar</button>
         </mat-card-actions>
       </mat-card>
     </mat-grid-tile>

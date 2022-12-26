@@ -25,6 +25,10 @@
         <input matInput formControlName="categoria" type="text" [value]="carroSelecionado.categoria" [(ngModel)]="carroSelecionado.categoria">
       </div>
       <div>
+        <label>Url da Imagem: </label>
+        <input matInput formControlName="imageUrl" type="text" [value]="carroSelecionado.imageUrl" [(ngModel)]="carroSelecionado.imageUrl">
+      </div>
+      <div>
         <label>Disponível: </label>
         <input formControlName="disponivel" type="checkbox" [value]="carroSelecionado.disponivel" [(ngModel)]="carroSelecionado.disponivel">
       </div>
