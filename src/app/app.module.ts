@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GerenciarUsuariosComponent } from './gerenciar-usuarios/gerenciar-usuarios.component';
 import { AlugadosComponent } from './alugados/alugados.component';
 import { DisponiveisComponent } from './disponiveis/disponiveis.component';
+import { UltimosPedidosComponent } from './main/pedidos/ultimos-pedidos/ultimos-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { DisponiveisComponent } from './disponiveis/disponiveis.component';
     GerenciarUsuariosComponent,
     AlugadosComponent,
     DisponiveisComponent,
+    UltimosPedidosComponent,
 
   ],
   imports: [
@@ -66,7 +69,8 @@ import { DisponiveisComponent } from './disponiveis/disponiveis.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

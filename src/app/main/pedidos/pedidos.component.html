@@ -1,20 +1,23 @@
-<div class="container">
+<div class="container" *ngIf="!(carro.id == 0 || pedido.status == 'FINALIZADO')">
     <div class="carro-pedido" *ngIf="carro">
         <h1>CARRO</h1>
-        <p>{{carro.modelo}}</p>
-        <p>{{carro.placa}}</p>
-        <p>{{carro.valorDiaria}}</p>
-        <p>{{carro.categoria}}</p>
+        <p>Modelo: {{carro.modelo}} | Placa: {{carro.placa}} | Valor Diária: {{carro.valorDiaria}} | Categoria: {{carro.categoria}}</p>
     </div>
     <div class="pedido" *ngIf="pedido">
         <h1>PEDIDO</h1>
-        <p>{{pedido.diasLocacao}}</p>
-        <p>{{pedido.status}}</p>
-        <p>{{pedido.valorTotal}}</p>
+        <p>Dias locados: {{pedido.diasLocacao}} | Status: {{pedido.status}} | Valor Total: {{pedido.valorTotal}}</p>
     </div>
     <form (ngSubmit)="onSubmit()">
         <label>Quantos dias o carro foi usado?</label>
         <input type="number" name="diasUsados" [(ngModel)]="devolucao.diasUsados">
         <button type="submit">Devolver</button>
     </form>
+</div>
+
+<div class="sem-pedidos" *ngIf="carro.id == 0 || pedido.status == 'FINALIZADO'">
+    <h1>NENHUM PEDIDO ATUAL</h1>
+</div>
+
+<div class="ultimos-pedidos">
+    <app-ultimos-pedidos></app-ultimos-pedidos>
 </div>

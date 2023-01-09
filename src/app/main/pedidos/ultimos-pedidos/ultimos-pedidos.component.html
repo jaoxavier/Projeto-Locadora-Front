@@ -1,0 +1,28 @@
+<div class="pedidos-container">
+    <h1>últimos pedidos</h1>
+    <div class="pedido-info" *ngFor="let pedido of pedidos">
+        <mat-list class="pedido-list" *ngIf="this.pedido.status != 'REALIZADO'">
+            <mat-list-item>
+                <p>
+                    Modelo: {{this.pedido.carro.modelo}}
+                </p>
+            </mat-list-item>
+            <mat-list-item>
+                <p>
+                    Dias de locação: {{this.pedido.diasLocacao}}
+                </p>    
+            </mat-list-item>
+            <mat-list-item>
+                <p>
+                    Valor pago (desconsiderando multa): {{this.pedido.valorTotal}}
+                </p>
+            </mat-list-item>
+            <mat-list-item>
+                <p>
+                    Status do pedido: {{this.pedido.status}}
+                </p>
+        </mat-list-item>
+        </mat-list>
+    </div>
+</div>
+
