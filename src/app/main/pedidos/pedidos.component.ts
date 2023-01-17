@@ -43,11 +43,7 @@ export class PedidosComponent implements OnInit {
   multaDTO = {
     valorMulta: 0
   }
-
-
-  header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
-
+  
   constructor(
     private accountService: AccountService,
     private pedidoService: PedidoService
@@ -56,7 +52,7 @@ export class PedidosComponent implements OnInit {
   ngOnInit(): void {
     const id = window.localStorage.getItem('id');
     if(id != null){
-      this.pedidoService.getPedido(id, this.header).subscribe(
+      this.pedidoService.getPedido(id).subscribe(
         data => {
           this.carro.id = data[data.length-1].carro.id;
           this.carro.modelo = data[data.length-1].carro.modelo;
@@ -83,7 +79,7 @@ export class PedidosComponent implements OnInit {
   }
   
   async devolver(){
-    this.pedidoService.patchPedido(this.pedido.id, this.devolucao, this.header).subscribe(
+    this.pedidoService.patchPedido(this.pedido.id, this.devolucao).subscribe(
       data => {
         this.multaDTO.valorMulta = data.valorMulta;
         

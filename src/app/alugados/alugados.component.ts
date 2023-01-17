@@ -10,10 +10,7 @@ import { Carro } from '../model/Carro';
   styleUrls: ['./alugados.component.css']
 })
 export class AlugadosComponent implements OnInit {
-
-  header = new HttpHeaders()
-  .set("Authorization", `Bearer ${this.accountService.getAuthorizationToken()}`)
-
+  
   carros: Carro[];
 
   constructor(
@@ -26,7 +23,7 @@ export class AlugadosComponent implements OnInit {
   }
 
   getCarrosLocados(){
-    this.carService.getCarrosLocados(this.header).subscribe(
+    this.carService.getCarrosLocados().subscribe(
       data => {
         console.log(data);
         

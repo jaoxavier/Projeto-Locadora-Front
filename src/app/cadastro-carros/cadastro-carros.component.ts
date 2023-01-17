@@ -19,8 +19,6 @@ export class CadastroCarrosComponent implements OnInit {
     private routerService: Router) { }
 
   id = window.localStorage.getItem('id')
-  header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
   admin = false
 
   carro = {
@@ -35,7 +33,7 @@ export class CadastroCarrosComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
-      this.accountService.getClienteIdUsuario(parseInt(this.id), this.header).subscribe(
+      this.accountService.getClienteIdUsuario(parseInt(this.id)).subscribe(
         data=>{
           this.admin = data.admin
           if(!this.admin){
@@ -46,7 +44,7 @@ export class CadastroCarrosComponent implements OnInit {
   }
 
   onSubmit(){
-    this.carService.cadastrarCarro(this.carro, this.header).subscribe(
+    this.carService.cadastrarCarro(this.carro).subscribe(
       data=>{
         console.log(data)
         this.routerService.navigate(['carros'])

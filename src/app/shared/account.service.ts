@@ -49,28 +49,28 @@ export class AccountService {
     return result;
   }
 
-  atualizarUsuario(id: number, usuario: AccountPut, header: HttpHeaders){
-    return this.http.put<any>(`${environment.api}/usuarios/id/${id}`, usuario, {'headers': header})
+  atualizarUsuario(id: number, usuario: AccountPut){
+    return this.http.put<any>(`${environment.api}/usuarios/id/${id}`, usuario, {'headers': this.header})
   }
 
-  getUsuarios(header: HttpHeaders): Observable<any>{
-    return this.http.get<any>(`${environment.api}/usuarios`, {"headers": header})
+  getUsuarios(): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios`, {"headers": this.header})
   }
 
-  getClienteIdUsuario(id: number, header: HttpHeaders): Observable<any>{
-    return this.http.get<any>(`${environment.api}/clientes/id/${id}`, {"headers": header})
+  getClienteIdUsuario(id: number): Observable<any>{
+    return this.http.get<any>(`${environment.api}/clientes/id/${id}`, {"headers": this.header})
   }
 
   getUsuarioInfo(): Observable<any>{
     return this.http.get<any>(`${environment.api}/usuarios/login/${this.account.login}`,{'headers': this.header});
   }
 
-  getUsuarioAccount(id: String, header: HttpHeaders): Observable<any>{
-    return this.http.get<any>(`${environment.api}/usuarios/id/${id}`, {'headers' : header})
+  getUsuarioAccount(id: String): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/id/${id}`, {'headers' : this.header})
   }
 
-  getLoginById(id: string, header: HttpHeaders): Observable<any>{
-    return this.http.get<any>(`${environment.api}/usuarios/${id}`, {'headers': header})
+  getLoginById(id: string): Observable<any>{
+    return this.http.get<any>(`${environment.api}/usuarios/${id}`, {'headers': this.header})
   }
 
   getAuthorizationToken(){

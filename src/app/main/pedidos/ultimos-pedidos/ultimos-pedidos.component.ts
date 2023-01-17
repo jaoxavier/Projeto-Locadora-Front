@@ -24,7 +24,7 @@ export class UltimosPedidosComponent implements OnInit {
     const id = window.localStorage.getItem('id');
 
     if(id!=null){
-      this.pedidoService.getPedido(id, this.header).subscribe(
+      this.pedidoService.getPedido(id).subscribe(
         data => {
           this.pedidos = data
           console.log(this.pedidos)

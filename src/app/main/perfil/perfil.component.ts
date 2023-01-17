@@ -65,9 +65,6 @@ export class PerfilComponent implements OnInit {
     private fb: FormBuilder) {
   }
 
-  header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
-
   atualizarDados(){
     if(this.id != null){
       this.usuarioModificando.id = parseInt(this.id)
@@ -107,7 +104,7 @@ export class PerfilComponent implements OnInit {
 
   onSubmitPerfil(){
     if(this.id != null){
-      this.accountService.atualizarUsuario(parseInt(this.id), this.usuarioModificando, this.header).subscribe(
+      this.accountService.atualizarUsuario(parseInt(this.id), this.usuarioModificando).subscribe(
         data =>{
           console.log(data)
           this.atualizandoDados = false
@@ -119,7 +116,7 @@ export class PerfilComponent implements OnInit {
 
   onSubmitEndereco(){
     if(this.id != null){
-      this.addressService.patchAddress(this.enderecoModificando, this.header).subscribe(
+      this.addressService.patchAddress(this.enderecoModificando).subscribe(
         data =>{
           console.log(data)
           this.atualizandoEndereco = false
@@ -144,7 +141,7 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
-      this.accountService.getUsuarioAccount(this.id, this.header).subscribe(
+      this.accountService.getUsuarioAccount(this.id).subscribe(
         data=>{
           this.usuario = data
           this.usuario.login = data.email
@@ -169,20 +166,18 @@ export class PerfilComponent implements OnInit {
           }
         })
 
-        this.addressService.getAddress(this.id, this.header)
+        this.addressService.getAddress(this.id)
       .subscribe(
         data => {
           this.address = data[0]
           console.log(data)
         })
 
-      this.pedidosService.getPedido(this.id, this.header).subscribe(
+      this.pedidosService.getPedido(this.id).subscribe(
         data => {
           if(data.length != 0){
             this.carro = data[data.length-1].carro
-            console.log(this.carro)
             this.pedido = data[data.length-1];
-            console.log(this.pedido);
           }
         })
 

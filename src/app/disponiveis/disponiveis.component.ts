@@ -11,9 +11,6 @@ import { AccountService } from '../shared/account.service';
 })
 export class DisponiveisComponent implements OnInit {
 
-  header = new HttpHeaders()
-  .set("Authorization", `Bearer ${this.accountService.getAuthorizationToken()}`);
-
   carros: Carro[];
 
   constructor(
@@ -26,7 +23,7 @@ export class DisponiveisComponent implements OnInit {
   }
 
   getCarrosDisponiveis(){
-    this.carService.getCarrosDisponiveis(this.header).subscribe(
+    this.carService.getCarrosDisponiveis().subscribe(
       data => {
         this.carros = data
       }

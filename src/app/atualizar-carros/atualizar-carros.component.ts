@@ -41,17 +41,13 @@ export class AtualizarCarrosComponent implements OnInit {
     }
 
     id = window.localStorage.getItem('id')
-
-    header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
-
     admin = false
 
     carros: Carro[]
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
-      this.accountService.getClienteIdUsuario(parseInt(this.id), this.header).subscribe(
+      this.accountService.getClienteIdUsuario(parseInt(this.id)).subscribe(
         data=>{
           this.admin = data.admin
           if(!this.admin){
@@ -67,8 +63,7 @@ export class AtualizarCarrosComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.carroSelecionado)
-    this.carService.atualizarCarro(this.carroSelecionado.id, this.carroSelecionado, this.header).subscribe(
+    this.carService.atualizarCarro(this.carroSelecionado.id, this.carroSelecionado).subscribe(
       data=>{
         console.log(data)
         this.carroForm.reset();

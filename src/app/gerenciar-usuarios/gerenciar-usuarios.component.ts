@@ -42,14 +42,11 @@ export class GerenciarUsuariosComponent implements OnInit {
   }
 
   id = window.localStorage.getItem('id')
-  header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
-
   admin = false
 
   ngOnInit(): void {
     if(this.id!=null && this.accountService.isUserLoggedIn()){
-      this.accountService.getClienteIdUsuario(parseInt(this.id), this.header).subscribe(
+      this.accountService.getClienteIdUsuario(parseInt(this.id)).subscribe(
         data=>{
           this.admin = data.admin
           if(!this.admin){
@@ -57,7 +54,7 @@ export class GerenciarUsuariosComponent implements OnInit {
           }
         })
     }
-    this.accountService.getUsuarios(this.header).subscribe(
+    this.accountService.getUsuarios().subscribe(
       data=>{
         this.usuarios = data
         console.log(data)
@@ -65,7 +62,7 @@ export class GerenciarUsuariosComponent implements OnInit {
   }
 
   onChange(){
-    this.accountService.getClienteIdUsuario(this.usuarioSelecionado.id, this.header).subscribe(
+    this.accountService.getClienteIdUsuario(this.usuarioSelecionado.id).subscribe(
       data=>{
         this.usuarioSelecionado.admin = data.admin
         this.usuarioSelecionado.senha = data.senha
@@ -74,7 +71,7 @@ export class GerenciarUsuariosComponent implements OnInit {
   }
 
   onSubmit(){
-    this.accountService.atualizarUsuario(this.usuarioSelecionado.id, this.usuarioSelecionado, this.header).subscribe(
+    this.accountService.atualizarUsuario(this.usuarioSelecionado.id, this.usuarioSelecionado).subscribe(
       data=>{
         console.log(this.usuarioSelecionado)
         this.routerService.navigate(['perfil'])

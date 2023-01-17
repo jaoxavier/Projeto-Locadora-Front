@@ -36,12 +36,12 @@ export class PedidoService {
     return new Observable<any>
   }
 
-  getPedido(id: string, header: HttpHeaders){
-    return this.http.get<any>(`${environment.api}/pedidos/userid/${id}`, {'headers': header})
+  getPedido(id: string){
+    return this.http.get<any>(`${environment.api}/pedidos/userid/${id}`, {'headers': this.header})
   }
 
-  patchPedido(id: number, status: any, header: HttpHeaders){
-    return this.http.patch<any>(`${environment.api}/pedidos/id/${id}`, status, {'headers': header})
+  patchPedido(id: number, status: any){
+    return this.http.patch<any>(`${environment.api}/pedidos/id/${id}`, status, {'headers': this.header})
   }
 
 }

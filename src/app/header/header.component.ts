@@ -9,11 +9,6 @@ import { AccountService } from '../shared/account.service';
 })
 export class HeaderComponent implements OnInit {
 
-  header = new HttpHeaders()
-    .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
-    .set('Access-Control-Allow-Origin', '*')
-    .set('Access-Control-Allow-Credentials', 'true');
-
   id: string | null;
 
   account = {
@@ -38,13 +33,13 @@ export class HeaderComponent implements OnInit {
         this.account.id = this.id;
       }
 
-      this.accountService.getUsuarioAccount(this.account.id, this.header).subscribe(
+      this.accountService.getUsuarioAccount(this.account.id).subscribe(
         data => {
           this.account.nomeUsuario = data.nomeUsuario;
         }
       )
 
-      this.accountService.getClienteIdUsuario(parseInt(this.account.id), this.header).subscribe(
+      this.accountService.getClienteIdUsuario(parseInt(this.account.id)).subscribe(
         data=>{
           this.account.admin = data.admin;
       })
