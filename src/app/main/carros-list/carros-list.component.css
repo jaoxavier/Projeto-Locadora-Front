@@ -6,3 +6,8 @@
     aspect-ratio: 4/2;
     object-fit: cover;
 }
+
+.info{
+    display: flex;
+    justify-content: space-between;
+}

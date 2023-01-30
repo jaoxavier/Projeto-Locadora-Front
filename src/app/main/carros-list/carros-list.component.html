@@ -7,9 +7,12 @@
           <mat-card-subtitle>{{carro.categoria}}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image class="car-image" src="{{carro.imageUrl}}" alt="carro do modelo {{carro.modelo}}">
-        <mat-card-actions align="end">
-          <button mat-button (click)="openDialog(carro.id)">Alugar</button>
-        </mat-card-actions>
+        <mat-card-content>
+          <mat-card-actions class="info">
+            <p>Valor da diária: R${{carro.valorDiaria}},00</p>
+            <button mat-button (click)="openDialog(carro.id)">Alugar</button>
+          </mat-card-actions>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CadastroCarrosComponent } from '../cadastro-carros/cadastro-carros.component';
 
 @Component({
   selector: 'app-painel-admin',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  OpenDialogCadastrarCarros(){
+    this.dialog.open(CadastroCarrosComponent)
   }
 
 }

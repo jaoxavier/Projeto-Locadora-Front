@@ -34,6 +34,7 @@ export class CarrosListComponent implements OnInit {
     this.dialogRef.open(NewOrderComponent, {
       data : {
         id: idCarro,
+        valorCarro: this.carros.find(i => i.id == idCarro)
       }
     })
   }

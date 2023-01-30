@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
@@ -11,7 +11,7 @@ import { CarrosListComponent } from '../carros-list.component';
   templateUrl: './new-order.component.html',
   styleUrls: ['./new-order.component.css']
 })
-export class NewOrderComponent implements OnInit {
+export class NewOrderComponent {
 
   header = new HttpHeaders()
   .set('Authorization', `Bearer ${this.accountService.getAuthorizationToken()}`)
@@ -35,9 +35,6 @@ export class NewOrderComponent implements OnInit {
     this.carro = data;
   }
 
-  ngOnInit(): void {
-  }
-
   onSubmit(){
     this.pedido.diasLocacao = Number(this.pedido.diasLocacao);
     this.pedido.carro = this.carro.id;
@@ -48,5 +45,4 @@ export class NewOrderComponent implements OnInit {
         this.router.navigate(['/perfil']);
       })
   }
-
 }

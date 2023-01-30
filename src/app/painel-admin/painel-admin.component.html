@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-title>Menu admin</mat-card-title>
     <mat-card-actions>
-      <button routerLink="/cadastro-carros" routerLinkActive='active'>Cadastrar carro</button>
+      <button (click)="OpenDialogCadastrarCarros()">Cadastrar carro</button>
       <button routerLink="/atualizar-carros" routerLinkActive='active'>Atualizar carro</button>
       <button routerLink="/gerenciar-usuarios" routerLinkActive='active'>Atualizar Usuario</button>
       <button routerLink="/relatorio-alugados" routerLinkActive='active'>Carros já alugados</button>

@@ -1,5 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { throwIfEmpty } from 'rxjs';
 import { Carro } from '../model/Carro';
@@ -14,9 +15,13 @@ import { AccountService } from '../shared/account.service';
 export class CadastroCarrosComponent implements OnInit {
 
   constructor(
+    @Inject (MAT_DIALOG_DATA) public data: any,
     private accountService: AccountService,
     private carService: CarService,
-    private routerService: Router) { }
+    private routerService: Router) 
+    { 
+      console.log(data)
+    }
 
   id = window.localStorage.getItem('id')
   admin = false
@@ -32,6 +37,7 @@ export class CadastroCarrosComponent implements OnInit {
   carros: Carro[]
 
   ngOnInit(): void {
+    
     if(this.id!=null && this.accountService.isUserLoggedIn()){
       this.accountService.getClienteIdUsuario(parseInt(this.id)).subscribe(
         data=>{
