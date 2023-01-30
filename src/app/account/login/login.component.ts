@@ -32,7 +32,9 @@ export class LoginComponent implements OnInit {
     try {
       this.accountService.login(login).subscribe(
         data => {
-          this.router.navigate(['home']);
+          this.router.navigate(['home']).then(
+            any => window.location.reload()
+          );
       })
     } catch (error) {
       console.error(error)
