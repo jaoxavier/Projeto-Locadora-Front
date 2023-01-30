@@ -1,60 +1,66 @@
-<section class="cadastro">
 <h2 class="text-center"> Criar uma nova conta</h2>
 
-<form (ngSubmit)="onSubmit()" #form="ngForm">
-    
-    <div class="info-account">
-        <div class="form-group">
-            <label>Nome</label>
-            <input class="form-control" type="text" name="nome" id="nome" [(ngModel)]="account.nome" required>
-        </div>
-        <div class="form-group">
-            <label>CPF</label>
-            <input class="form-control" type="text" name="cpf" id="cpf" [(ngModel)]="account.cpf" required>
-        </div>
-        <div class="form-group">
-            <label>CNH</label>
-            <input class="form-control" type="text" name="cnh" id="cnh" [(ngModel)]="account.cnh" required>
-        </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="account.login" [(ngModel)]="address.login" required>
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="account.senha" required>
-        </div>
-    </div>
-    
-    <div class="address">
-        <div class="form-group">
-            <label>CEP</label>
-            <input class="form-control" type="text" name="cep" id="cep" [(ngModel)]="address.cep"  required>
-           <button class="buscar" type="button" (click)="buscaCep()">BUSCAR</button>
-            
-        </div>
-        <div class="form-group">
-            <label>Rua</label>
-            <input type="text" name="rua" id="rua" [(ngModel)]="address.rua" required>
-        </div>
-        <div class="form-group">
-            <label>Numero</label>
-            <input type="text" name="numero" id="numero" [(ngModel)]="address.numero" required>
-        </div>
-        <div class="form-group">
-            <label>Cidade</label>
-            <input type="text" name="cidade" id="cidade" [(ngModel)]="address.cidade" required>
-        </div>
-        <div class="form-group">
-            <label>Bairro</label>
-            <input type="text" name="bairro" id="bairro" [(ngModel)]="address.bairro" required>
-        </div>
-        <div class="form-group">
-            <label>Estado</label>
-            <input type="text" name="estado" id="estado" [(ngModel)]="address.estado" required>
-        </div>
-    </div>
+<section class="cadastro">
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="cadastro-form">
+        <div class="info-account">
+            <mat-form-field>
+                <label>Nome:</label>
+                <input matInput type="text" name="nome" id="nome" [formControl]="nome" required>
+                <mat-error>Nome é obrigatório</mat-error>
+            </mat-form-field>
 
-    <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid" >Criar conta</button>
-</form>
+            <mat-form-field>
+                <label>CPF:</label>
+                <input matInput type="text" name="cpf" id="cpf" [formControl]="cpf" required>
+                <mat-error>CPF é obrigatório</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label>CNH</label>
+                <input matInput type="text" name="cnh" id="cnh" [formControl]="cnh" required>
+                <mat-error>CNH é obrigatório</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label>E-mail</label>
+                <input matInput type="text" name="login" id="login" [formControl]="login" required>
+                <mat-error>E-mail é obrigatório</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <label>Senha</label>
+                <input matInput type="password" name="senha" id="senha" [formControl]="senha" required>
+                <mat-error>Senha é obrigatório</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="address">
+            <mat-form-field class="cep-form">
+                <label>CEP</label>
+                <input matInput type="text" name="cep" id="cep" [(ngModel)]="address.cep" required>
+                <button class="buscar" type="button" (click)="buscaCep()">BUSCAR</button>
+            </mat-form-field>
+            <mat-form-field class="form-group">
+                <label>Rua</label>
+                <input matInput type="text" name="rua" id="rua" [(ngModel)]="address.rua" required>
+            </mat-form-field>
+            <mat-form-field class="form-group">
+                <label>Numero</label>
+                <input matInput type="text" name="numero" id="numero" [(ngModel)]="address.numero" required>
+            </mat-form-field>
+            <mat-form-field class="form-group">
+                <label>Cidade</label>
+                <input matInput type="text" name="cidade" id="cidade" [(ngModel)]="address.cidade" required>
+            </mat-form-field>
+            <mat-form-field class="form-group">
+                <label>Bairro</label>
+                <input matInput type="text" name="bairro" id="bairro" [(ngModel)]="address.bairro" required>
+            </mat-form-field>
+            <mat-form-field class="form-group">
+                <label>Estado</label>
+                <input matInput type="text" name="estado" id="estado" [(ngModel)]="address.estado" required>
+            </mat-form-field>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid">Criar conta</button>
+    </form>
 </section>

@@ -4,15 +4,16 @@
     <section class="titulo">
 <h2 class="text-center">Entrar</h2>
     </section>
-<form (ngSubmit)="onSubmit()" #form="ngForm">
-    <div class="form-group">
-        <label>E-mail</label>
-        <input class="form-control" placeholder="Insira seu emaill" type="email" name="email" id="email" [(ngModel)]="login.login" required>
-    </div>
-    <div class="form-group">
-        <label>Senha</label>
-        <input class="form-control" placeholder="Insira sua senha" type="password" name="password" id="password" [(ngModel)]="login.senha" required>
-    </div>
+<form (ngSubmit)="onSubmit()" #form="ngForm" class="login-form">
+    
+    <mat-form-field class="form-group">
+        <input matInput class="form-control" placeholder="Insira seu emaill" type="email" name="email" id="email" [formControl]="login" required>
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+        <input matInput class="form-control" placeholder="Insira sua senha" type="password" name="password" id="password" [formControl]="senha" required>
+    </mat-form-field>
+
     <button type="submit" class="btn btn-primary btn-block" [disabled]="form.form.invalid" >Entrar</button>
     <button type="button" class="btn btn-link btn-block" [routerLink]="['/cadastro']">Criar conta</button>
 </form>

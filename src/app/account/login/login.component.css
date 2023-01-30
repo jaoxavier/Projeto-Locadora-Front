@@ -76,6 +76,18 @@ button{
 
 }
 
+.login-form{
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    justify-content: center;
+}
+
+.login-form button{
+    display: flex;
+    flex-direction: row;
+}
+
 
 input{
     padding: 10px;

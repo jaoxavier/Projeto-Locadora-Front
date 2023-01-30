@@ -1,5 +1,5 @@
 import { Component, createPlatform, EventEmitter, OnChanges, Output, SimpleChange, SimpleChanges } from '@angular/core';
-import { NgForm, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
 import { Address } from 'src/app/model/Address';
@@ -12,8 +12,6 @@ import { Account } from 'src/app/model/Account';
 })
 export class CreateAccountComponent {
 
-
-
   address = {
     bairro: '',
     cidade: '',
@@ -23,15 +21,12 @@ export class CreateAccountComponent {
     numero: '',
     login: ''
   }
-  account = {
-    nome: '',
-    cpf: '',
-    cnh: '',
-    login: '',
-    senha: '',
-    admin: true,
-    address: this.address
-  }
+
+  nome = new FormControl('', [Validators.required]);
+  cpf = new FormControl('', [Validators.required]);
+  cnh = new FormControl('', [Validators.required]);
+  login = new FormControl('', [Validators.email, Validators.required]);
+  senha = new FormControl('', [Validators.required]);
 
   constructor(
     private accountService: AccountService,
@@ -39,18 +34,24 @@ export class CreateAccountComponent {
   ) {}
 
   onSubmit(){
+    let account = new Account(
+      this.nome!.value || '',
+      this.cpf!.value || '',
+      this.cnh!.value || '',
+      this.login!.value || '',
+      this.senha!.value || '',
+      this.address
+    )
+    
     try {
-      this.accountService.createAccount(this.account).subscribe(
+      this.accountService.createAccount(account).subscribe(
         data => {
-          console.log("Criando conta retorno: ", data)
-          console.log("Criando conta: ", this.account)
-          console.log("Conta criada com o endereço: ", this.address)
-      })
-      this.router.navigate(['login']);
+          this.router.navigate(['login']);
+      });
     } catch (error) {
       console.error(error);
     }
-    this.account.senha = '';
+    this.senha.setValue('');
   }
 
   buscaCep(){
@@ -61,7 +62,7 @@ export class CreateAccountComponent {
         this.address.rua = data.logradouro;
         this.address.estado = data.uf;
         this.address.cep = data.cep;
-        this.address.login = this.account.login;
+        this.address.login = this.login.value!
       }
     )
   }
