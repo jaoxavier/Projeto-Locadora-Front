@@ -34,6 +34,8 @@ import { GerenciarUsuariosComponent } from './gerenciar-usuarios/gerenciar-usuar
 import { AlugadosComponent } from './alugados/alugados.component';
 import { DisponiveisComponent } from './disponiveis/disponiveis.component';
 import { UltimosPedidosComponent } from './main/pedidos/ultimos-pedidos/ultimos-pedidos.component';
+import { AtualizarClienteDialogComponent } from './main/perfil/dialog/atualizar-cliente-dialog/atualizar-cliente-dialog.component';
+import { AtualizarEnderecoDialogComponent } from './main/perfil/dialog/atualizar-endereco-dialog/atualizar-endereco-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { UltimosPedidosComponent } from './main/pedidos/ultimos-pedidos/ultimos-
     AlugadosComponent,
     DisponiveisComponent,
     UltimosPedidosComponent,
+    AtualizarClienteDialogComponent,
+    AtualizarEnderecoDialogComponent,
 
   ],
   imports: [

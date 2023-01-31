@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AccountPut } from 'src/app/model/AccountPut';
 import { Address } from 'src/app/model/Address';
 import { AccountService } from 'src/app/shared/account.service';
 import { AddressService } from 'src/app/shared/address.service';
 import { PedidoService } from 'src/app/shared/pedido.service';
+import { AtualizarClienteDialogComponent } from './dialog/atualizar-cliente-dialog/atualizar-cliente-dialog.component';
+import { AtualizarEnderecoDialogComponent } from './dialog/atualizar-endereco-dialog/atualizar-endereco-dialog.component';
 
 @Component({
   selector: 'app-perfil',
@@ -58,47 +61,27 @@ export class PerfilComponent implements OnInit {
   enderecoModificando: Address
 
   constructor(
+    private dialog: MatDialog,
     private addressService: AddressService,
     private accountService: AccountService,
     private pedidosService: PedidoService,
     private fb: FormBuilder) {
   }
 
-  atualizarDados(){
-    if(this.id != null){
-      this.usuarioModificando.id = parseInt(this.id)
-    }
-    this.usuarioModificando.nome = this.usuario.nomeUsuario
-    this.usuarioModificando.cpf = this.usuario.cpf
-    this.usuarioModificando.cnh = this.usuario.cnh
-    this.usuarioModificando.login = this.usuario.login
-    this.perfilForm = this.fb.group({
-      nome: new FormControl(this.usuarioModificando.nome),
-      cpf: new FormControl(this.usuarioModificando.cpf),
-      cnh: new FormControl(this.usuarioModificando.cnh),
-      email: new FormControl({value: this.usuarioModificando.login, disabled: true}),
-      senha: new FormControl(this.usuarioModificando.senha)
+  openAtualizarDados(usuario: any){
+    this.dialog.open(AtualizarClienteDialogComponent, {
+      data: {
+        usuario: usuario
+      }
     })
-    this.atualizandoDados = true
   }
 
-  atualizarEndereco(){
-    this.enderecoModificando.login = this.usuario.login
-    this.enderecoModificando.cep = this.address.cep
-    this.enderecoModificando.bairro = this.address.bairro
-    this.enderecoModificando.cidade = this.address.cidade
-    this.enderecoModificando.numero = this.address.numero
-    this.enderecoModificando.rua = this.address.rua
-    this.enderecoModificando.estado = this.address.estado
-    this.enderecoForm = this.fb.group({
-      cep: new FormControl(this.enderecoModificando.cep),
-      bairro: new FormControl(this.enderecoModificando.bairro),
-      cidade: new FormControl(this.enderecoModificando.cidade),
-      numero: new FormControl(this.enderecoModificando.numero),
-      rua: new FormControl(this.enderecoModificando.rua),
-      estado: new FormControl(this.enderecoModificando.estado)
+  openAtualizarEndereco(){
+    this.dialog.open(AtualizarEnderecoDialogComponent, {
+      data: {
+        address: this.address
+      }
     })
-    this.atualizandoEndereco = true
   }
 
   onSubmitPerfil(){

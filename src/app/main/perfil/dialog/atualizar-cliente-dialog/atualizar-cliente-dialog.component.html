@@ -1,0 +1,32 @@
+<mat-card>
+    <form [formGroup]="accountForm" #form="ngForm">
+      <h2>Atualizar cadastro</h2>
+      <mat-form-field>
+        <label>Nome: </label>
+        <input matInput formControlName="nome" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>CPF: </label>
+        <input matInput formControlName="cpf" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>CNH: </label>
+        <input matInput formControlName="cnh" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>Email: </label>
+        <input matInput formControlName="login" type="text">
+      </mat-form-field>
+
+      <mat-form-field>
+        <label>Senha: </label>
+        <input matInput formControlName="senha" type="password">
+        <mat-error>Password is required</mat-error>
+      </mat-form-field>
+
+      <button type="submit" (click)="onSubmit()" [disabled]="form.invalid">Salvar</button>
+    </form>
+  </mat-card>

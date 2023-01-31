@@ -1,0 +1,31 @@
+<mat-card>
+    <form (ngSubmit)="onSubmit()">
+      <h2>Atualizar endereco</h2>
+      <div>
+        <label>Cep: </label>
+        <input matInput type="text" [(ngModel)]="novoEndereco.cep" [ngModelOptions]="{standalone: true}">
+        <button class="buscar" type="button" (click)="buscaCep()">BUSCAR</button>
+      </div>
+      <div>
+        <label>Bairro: </label>
+        <input matInput  type="text" [(ngModel)]="novoEndereco.bairro" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <label>Cidade: </label>
+        <input matInput  type="text" [(ngModel)]="novoEndereco.cidade" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <label>Numero: </label>
+        <input matInput  type="text" [(ngModel)]="novoEndereco.numero" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <label>Rua: </label>
+        <input matInput  type="text" [(ngModel)]="novoEndereco.rua" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <label>Estado: </label>
+        <input matInput  type="text" [(ngModel)]="novoEndereco.estado" [ngModelOptions]="{standalone: true}">
+      </div>
+      <button type="submit">Salvar</button>
+    </form>
+  </mat-card>
