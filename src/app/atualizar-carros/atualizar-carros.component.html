@@ -1,8 +1,8 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="carroForm">
+<form  (ngSubmit)="onSubmit()" [formGroup]="carroForm">
   <h2>Atualizar carro existente</h2>
   <div class="atualizar-carro">
-      <label>Selecione o carro</label>
-      <mat-select name="carroSelecionado" class="carro-select" [(value)]="carroSelecionado">
+    <label>Selecione o carro</label>
+    <mat-select name="carroSelecionado" class="carro-select" [(value)]="carroSelecionado">
         <mat-option *ngFor="let carro of carros" [value]="carro">
           {{carro.modelo | uppercase}} - {{carro.placa | uppercase}}
         </mat-option>
