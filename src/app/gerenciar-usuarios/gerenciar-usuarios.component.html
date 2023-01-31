@@ -1,14 +1,14 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="usuariosForm">
     <h2>Gerenciar usuarios</h2>
+    <label>Selecione o usuario</label>
+    <mat-select name="usuarioSelecionado" class="usuario-select" [(value)]="usuarioSelecionado" (valueChange)="onChange()">
+      <mat-option *ngFor="let usuario of usuarios" [value]="usuario">
+        {{usuario.nome | uppercase}} - {{usuario.cpf | uppercase}}
+      </mat-option>
+    </mat-select>
     <div class="atualizar-usuario">
-        <label>Selecione o usuario</label>
-        <mat-select name="usuarioSelecionado" class="usuario-select" [(value)]="usuarioSelecionado" (valueChange)="onChange()">
-          <mat-option *ngFor="let usuario of usuarios" [value]="usuario">
-            {{usuario.nome | uppercase}} - {{usuario.cpf | uppercase}}
-          </mat-option>
-        </mat-select>
       <div *ngIf="usuarioSelecionado.id !=0">
-        <div>
+        <div >
           <label>Nome: </label>
           <input matInput formControlName="nome" type="text" [(ngModel)]="usuarioSelecionado.nome">
         </div>

@@ -1,3 +1,5 @@
+import { GerenciarUsuariosComponent } from './../gerenciar-usuarios/gerenciar-usuarios.component';
+import { AtualizarCarrosComponent } from './../atualizar-carros/atualizar-carros.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CadastroCarrosComponent } from '../cadastro-carros/cadastro-carros.component';
@@ -20,4 +22,12 @@ export class PainelAdminComponent implements OnInit {
     this.dialog.open(CadastroCarrosComponent)
   }
 
+
+  openDialogAtualizarCarro(){
+    this.dialog.open(AtualizarCarrosComponent)
+  }
+
+  openDialogAtualizarUsuario(){
+    this.dialog.open(GerenciarUsuariosComponent)
+  }
 }
