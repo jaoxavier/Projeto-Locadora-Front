@@ -8,6 +8,7 @@
     <a routerLink="/cadastro" routerLinkActive='active'>Cadastro</a>
   </div>
   <div *ngIf="logado">
+    <button>SAIR</button>
     <a routerLink="/perfil" routerLinkActive='active'>Olá, {{account.nomeUsuario}}</a>
   </div>
   <div *ngIf="logado && account.admin">
