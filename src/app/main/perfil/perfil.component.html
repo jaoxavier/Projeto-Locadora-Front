@@ -1,5 +1,6 @@
 <div class="perfil">
-  <mat-card *ngIf="!atualizandoDados">
+  
+  <mat-card>
     <mat-card-header>
       <mat-card-title>Olá, {{usuario.nomeUsuario}}</mat-card-title>
     </mat-card-header>
@@ -10,36 +11,11 @@
       <p>Número da CNH: {{usuario.cnh}}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button (click)="atualizarDados()">Atualizar dados</button>
+      <button (click)="openAtualizarDados(usuario)">Atualizar dados</button>
     </mat-card-actions>
   </mat-card>
-  <mat-card *ngIf="atualizandoDados">
-    <form (ngSubmit)="onSubmitPerfil()" [formGroup]="perfilForm">
-      <h2>Atualizar cadastro</h2>
-      <div>
-        <label>Nome: </label>
-        <input matInput formControlName="nome" type="text" [(ngModel)]="usuarioModificando.nome">
-      </div>
-      <div>
-        <label>CPF: </label>
-        <input matInput formControlName="cpf" type="text" [(ngModel)]="usuarioModificando.cpf">
-      </div>
-      <div>
-        <label>CNH: </label>
-        <input matInput formControlName="cnh" type="text" [(ngModel)]="usuarioModificando.cnh">
-      </div>
-      <div>
-        <label>Email: </label>
-        <input matInput formControlName="email" type="text" [(ngModel)]="usuarioModificando.login">
-      </div>
-      <div>
-        <label>Senha: </label>
-        <input matInput formControlName="senha" type="password" [(ngModel)]="usuarioModificando.senha">
-      </div>
-      <button type="submit">Salvar</button>
-    </form>
-  </mat-card>
-  <mat-card *ngIf="!atualizandoEndereco">
+
+  <mat-card>
     <mat-card-header>
       <mat-card-title>Endereço:</mat-card-title>
     </mat-card-header>
@@ -52,40 +28,10 @@
       <p>Cep: {{address.cep}}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button (click)="atualizarEndereco()">Atualizar endereco</button>
+      <button (click)="openAtualizarEndereco()">Atualizar endereco</button>
     </mat-card-actions>
   </mat-card>
-  <mat-card *ngIf="atualizandoEndereco">
-    <form (ngSubmit)="onSubmitEndereco()" [formGroup]="enderecoForm">
-      <h2>Atualizar endereco</h2>
-      <div>
-        <label>Cep: </label>
-        <input matInput formControlName="cep" type="text" [(ngModel)]="enderecoModificando.cep">
-        <button class="buscar" type="button" (click)="buscaCep()">BUSCAR</button>
-      </div>
-      <div>
-        <label>Bairro: </label>
-        <input matInput formControlName="bairro" type="text" [(ngModel)]="enderecoModificando.bairro">
-      </div>
-      <div>
-        <label>Cidade: </label>
-        <input matInput formControlName="cidade" type="text" [(ngModel)]="enderecoModificando.cidade">
-      </div>
-      <div>
-        <label>Numero: </label>
-        <input matInput formControlName="numero" type="text" [(ngModel)]="enderecoModificando.numero">
-      </div>
-      <div>
-        <label>Rua: </label>
-        <input matInput formControlName="rua" type="text" [(ngModel)]="enderecoModificando.rua">
-      </div>
-      <div>
-        <label>Estado: </label>
-        <input matInput formControlName="estado" type="text" [(ngModel)]="enderecoModificando.estado">
-      </div>
-      <button type="submit">Salvar</button>
-    </form>
-  </mat-card>
+
   <mat-card>
     <mat-card-header>
       <mat-card-title>Pedidos:</mat-card-title>

@@ -3,7 +3,7 @@ import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/shared/account.service';
 import { Address } from 'src/app/model/Address';
-import { Account } from 'src/app/model/Account';
+import { Account, AccountBuilder } from 'src/app/model/Account';
 
 @Component({
   selector: 'app-create-account',
@@ -34,15 +34,17 @@ export class CreateAccountComponent {
   ) {}
 
   onSubmit(){
-    let account = new Account(
-      this.nome!.value || '',
-      this.cpf!.value || '',
-      this.cnh!.value || '',
-      this.login!.value || '',
-      this.senha!.value || '',
-      this.address
-    )
+    let ab = new AccountBuilder();
 
+    let account = ab.info()
+      .nome(this.nome.value != null ? this.nome.value : '')
+      .cpf(this.cpf.value != null ? this.cpf.value : '')
+      .cnh(this.cnh.value != null ? this.cnh.value : '')
+      .login(this.login.value != null ? this.login.value : '')
+      .senha(this.senha.value != null ? this.senha.value : '')
+      .address(this.address)
+    .build();
+    
     try {
       this.accountService.createAccount(account).subscribe(
         data => {
