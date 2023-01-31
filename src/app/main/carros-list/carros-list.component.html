@@ -1,8 +1,8 @@
 <mat-grid-list cols="4">
   <div *ngFor="let carro of carros" >
-    <mat-grid-tile *ngIf="carro.disponivel">
+    <mat-grid-tile id="carros" *ngIf="carro.disponivel">
       <mat-card class="car-container">
-        <mat-card-header>
+        <mat-card-header >
           <mat-card-title>{{carro.modelo}}</mat-card-title>
           <mat-card-subtitle>{{carro.categoria}}</mat-card-subtitle>
         </mat-card-header>
@@ -10,7 +10,7 @@
         <mat-card-content>
           <mat-card-actions class="info">
             <p>Valor da diária: R${{carro.valorDiaria}},00</p>
-            <button mat-button (click)="openDialog(carro.id)">Alugar</button>
+            <button mat-button (click)="openDialog(carro.id)">ALUGAR</button>
           </mat-card-actions>
         </mat-card-content>
       </mat-card>

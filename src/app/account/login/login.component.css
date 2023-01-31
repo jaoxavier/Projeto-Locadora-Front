@@ -100,7 +100,8 @@ input{
 }
 
 button:hover{
-    background-color:deepskyblue;
-    cursor: pointer;
-    color: darkgray
+  background-color:blue;
+  cursor: pointer;
+  
 }
+

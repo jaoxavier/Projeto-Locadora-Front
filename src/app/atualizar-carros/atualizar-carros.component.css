@@ -5,3 +5,59 @@
 .carro-select{
   width: 150px;
 }
+
+form{
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+}
+
+mat-select{
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: 15px;
+  margin: 10px;
+}
+
+.atualizar-carro{
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+.atualizar-carro div{
+  padding: 0px;
+  width: 90%;
+  padding: 5px;
+}
+
+input{
+  padding: 5px;
+  width: 100%;
+}
+
+
+
+button{
+
+  color: white;
+  font-weight: bold;
+  border: none;
+  background-color: dodgerblue ;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  padding: 15px;
+  border-radius: 15px;
+  width: 100%;
+  margin: 5px;
+  }
+
+  button:hover{
+  background-color:blue;
+  cursor: pointer;
+
+  }

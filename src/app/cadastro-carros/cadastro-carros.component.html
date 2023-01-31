@@ -1,6 +1,7 @@
-<form (ngSubmit)="onSubmit()" #form="ngForm">
-  <h2>Criar novo carro</h2>
-  <div class="info-carro">
+
+<form class="cadastro"  (ngSubmit)="onSubmit()" #form="ngForm">
+  <h1 >Criar novo carro</h1>
+  <div  class="info-carro">
     <div class="form-group">
       <label>Modelo</label>
       <input class="form-control" type="text" name="modelo" id="modelo" [(ngModel)]="carro.modelo" required>
