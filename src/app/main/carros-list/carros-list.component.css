@@ -1,5 +1,6 @@
 .car-container {
     width: 80%;
+
 }
 
 .car-image{
@@ -10,4 +11,38 @@
 .info{
     display: flex;
     justify-content: space-between;
+}
+
+button{
+  margin-left: 0px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  background-color: dodgerblue ;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  padding: 5px;
+  border-radius: 15px;
+  margin-right: 10px;
+  width: 40%;
+}
+
+button:hover{
+  background-color:blue;
+  cursor: pointer;
+
+}
+
+div{
+  margin: 50px;
+
+}
+
+#carros{
+  margin: 100px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  width: 100%;
+
 }

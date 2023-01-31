@@ -1,8 +1,9 @@
-<h2 class="text-center"> Criar uma nova conta</h2>
+
 
 <section class="cadastro">
     <form (ngSubmit)="onSubmit()" #form="ngForm" class="cadastro-form">
         <div class="info-account">
+          <h1 class="text-center"> Criar uma nova conta</h1>
             <mat-form-field>
                 <label>Nome:</label>
                 <input matInput type="text" name="nome" id="nome" [formControl]="nome" required>
@@ -38,8 +39,8 @@
             <mat-form-field class="cep-form">
                 <label>CEP</label>
                 <input matInput type="text" name="cep" id="cep" [(ngModel)]="address.cep" required>
-                <button class="buscar" type="button" (click)="buscaCep()">BUSCAR</button>
-            </mat-form-field>
+              </mat-form-field>
+              <button class="buscar" type="button" (click)="buscaCep()">BUSCAR</button>
             <mat-form-field class="form-group">
                 <label>Rua</label>
                 <input matInput type="text" name="rua" id="rua" [(ngModel)]="address.rua" required>

@@ -42,7 +42,7 @@ export class CreateAccountComponent {
       this.senha!.value || '',
       this.address
     )
-    
+
     try {
       this.accountService.createAccount(account).subscribe(
         data => {
